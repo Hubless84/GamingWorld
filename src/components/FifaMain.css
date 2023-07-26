@@ -1,0 +1,70 @@
+/* Navbar styles */
+nav {
+    background-color: #333;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+  
+  /* Flex container for upcoming tournaments */
+  .flex-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .upcoming-tournaments {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .upcoming-tournaments th {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .upcoming-tournaments td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  
+  /* Table for trending videos styles */
+  .trending-videos {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .trending-videos th {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .trending-videos td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Add any additional styles or overrides as needed */
+  
