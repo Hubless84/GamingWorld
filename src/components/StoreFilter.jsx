@@ -10,7 +10,7 @@ let StoreFilter = (props) => {
     return(<div className="Filter-Products">
         <select name="Type" onChange={onFilterValueChanged}>
             <option value="all">All</option>
-            <option value="Gaming mouses">Gaming mouses</option>
+            <option value="Gaming Mouses">Gaming mouses</option>
             <option value="Gaming Keyboards">Gaming Keyboards</option>
             <option value="Gaming Headphones">Gaming Headphones</option>
             <option value="Gaming pads">Gaming Pads</option>

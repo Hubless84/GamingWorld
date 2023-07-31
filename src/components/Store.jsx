@@ -10,7 +10,7 @@ const Store = () => {
   const [filterTextvalue, updateFilterText] = useState("all");
 
   let filteredProductList = newProductList.filter((Product) => {
-    if (filterTextvalue === "Gaming mouses") {
+    if (filterTextvalue === "Gaming Mouses") {
       return Product.type === "Mouse";
     } else if (filterTextvalue === "Gaming Keyboards") {
       return Product.type === "Keyboard";

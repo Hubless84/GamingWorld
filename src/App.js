@@ -12,15 +12,22 @@ import Store from "./components/Store";
 import FifaMain from "./components/FifaMain";
 import DotaMain from "./components/DotaMain";
 import { ShopContextProvider } from "./components/Shop-Context";
+import Payment from './components/Payment';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import {Cart} from './components/Cart';
 import "./App.css"
+
+
+const stripePromise = loadStripe('YOUR_STRIPE_PUBLIC_KEY');
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar/>
-        <ShopContextProvider>
+      <ShopContextProvider>
+        <NavBar/>
           <Routes>
+            <Route path="/" element ={<HomePage/>} />
             <Route path="/Tournaments" element ={<Tournaments/>} />
             <Route path="/FifaMain" element ={<FifaMain/>} />
             <Route path="/DotaMain" element ={<DotaMain/>} />
@@ -30,10 +37,11 @@ function App() {
             <Route path="/SignupForm" element={<SignupForm/>} />
             <Route path="/ContactForm" element={<ContactForm/>} />
             <Route path="/Cart" element={<Cart/>} />
+            <Route path="/Payment" element={<Elements stripe={stripePromise}><Payment /></Elements>} />
             <Route path="*" element={<ErrorPage/>} />
           </Routes>
-        </ShopContextProvider>
-      <Footer/>
+        <Footer/>
+      </ShopContextProvider>
     </BrowserRouter>
   );
 }

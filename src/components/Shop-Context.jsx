@@ -25,6 +25,14 @@ export const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
+  const getTotalCartItemsCount = () => {
+    let CartAmount = 0;
+    for(const item in cartItems){
+      CartAmount += cartItems[item]
+    }
+    return CartAmount;
+  };
+
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
   };
@@ -37,8 +45,12 @@ export const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
   };
 
-  const checkout = () => {
+  const resetCart = () => {
     setCartItems(getDefaultCart());
+  };
+
+  const payMent = () => {
+    setCartItems(getTotalCartAmount());
   };
 
   const contextValue = {
@@ -47,7 +59,9 @@ export const ShopContextProvider = (props) => {
     updateCartItemCount,
     removeFromCart,
     getTotalCartAmount,
-    checkout,
+    getTotalCartItemsCount,
+    resetCart,
+    payMent,
   };
 
   return (

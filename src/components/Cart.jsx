@@ -6,8 +6,12 @@ import { CartItem } from "./Cart_item";
 import "./Cart.css";
 
 export const Cart = () => {
-  const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
+  const { cartItems, getTotalCartAmount, resetCart } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
+
+  const handleContinuePurchase = () => {
+    navigate("/Payment", { state: { totalAmount: totalAmount } });
+  };
 
   const navigate = useNavigate();
 
@@ -26,19 +30,24 @@ export const Cart = () => {
       </div>
 
       {totalAmount > 0 ? (
-        <div className="checkout">
-          <p> Subtotal: ${totalAmount} </p>
-          <button onClick={() => navigate("/")}> Continue Shopping </button>
-          <button
-            onClick={() => {
-              checkout();
-              navigate("/checkout");
-            }}
-          >
-            {" "}
-            Checkout{" "}
-          </button>
-        </div>
+        <>
+          <div className="checkout">
+            <p> Subtotal: ₪{totalAmount} </p>
+            <button onClick={() => navigate("/")}> Continue Shopping </button>
+            <button
+              onClick={() => {
+                resetCart();
+                navigate("/Cart");
+              }}
+            >
+              {" "}
+              reset Cart{" "}
+            </button>
+          </div>
+          <div className="purchase">
+              <button onClick={handleContinuePurchase}>Continue purchase</button>
+          </div>
+        </>
       ) : (
         <h1> Your Shopping Cart is Empty</h1>
       )}
