@@ -12,8 +12,9 @@ const NavBar = () => {
     <nav className="navbar">
      
      <div className="login-register">
-        {/* Replace the content inside this div with the "Login/Register" button */}
-        <button className="login-button">Login/Register</button>
+        <Link to="/LoginForm">
+            <button className="login-button">Login/Register</button>
+        </Link>
       </div>
       <div className="logo">
         <img src={(require('../images/GamingWorld.png'))} alt="logo" />
@@ -26,7 +27,6 @@ const NavBar = () => {
       </div>
       <ul className="nav-links">
         <li><Link to="/HomePage">Home</Link></li>
-        <li><Link to="/LoginForm">Login</Link></li>
         <li><Link to="/Tournaments">Tournaments</Link></li>
         <li><Link to="/Store">Store</Link></li>
         <li>
