@@ -1,0 +1,110 @@
+/* BeAPro.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  header {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .main-content {
+    width: 80%;
+  }
+  
+  .upcoming-tournaments {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .upcoming-tournaments th,
+  .upcoming-tournaments td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .upcoming-tournaments th:nth-child(4),
+  .upcoming-tournaments td:nth-child(4) {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .upcoming-tournaments td.availability-red {
+    background-color: #ff7043;
+  }
+  
+  .upcoming-tournaments td.availability-yellow {
+    background-color: #ffca28;
+  }
+  
+  .upcoming-tournaments td.availability-green {
+    background-color: #00c853;
+  }
+  
+  .upcoming-tournaments td.quality-blue-1 {
+    background-color: #4287f5;
+  }
+  
+  .upcoming-tournaments td.quality-blue-2 {
+    background-color: #3772b2;
+  }
+  
+  .upcoming-tournaments td.quality-blue-3 {
+    background-color: #2c5a8b;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+  }
+  
+  /* Modal styles */
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .modal-content h2 {
+    color: #333;
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .modal-content label {
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid
+  }
+  
