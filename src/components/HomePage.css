@@ -1,3 +1,14 @@
+*{
+  font-family:"CustomFont";
+  box-sizing: border-box;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "CustomFont";
+  src: url("../fonts/RolexLight.woff2");
+}
+
 .home-page-tour {
     text-align: center;
   }
@@ -17,7 +28,7 @@
     margin: 15px;
   }
   
-  .container {
+  .homepage-container {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -63,4 +74,3 @@
   tr:not(:last-child) {
     margin-bottom: 10px;
   }
-  

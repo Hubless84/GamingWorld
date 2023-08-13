@@ -21,18 +21,18 @@ const LoginForm = () => {
     setTimeout(() => showPopup("hide"), 3000);
   };
 
-  const onSuccess = e => {
+  /*const onSuccess = e => {
     alert("User signed in");
     console.log(e);
-  };
+  }; */
 
-  const onFailure = e => {
+  /*const onFailure = e => {
     alert("User sign in Failed");
     console.log(e);
-  };
+  }; */
 
   return (
-    <div className="cover">
+    <div className="login-cover">
       <h1>Login</h1>
       <input type="text" placeholder="Enter username"/>
       <input type="password" placeholder="Enter password"/>
@@ -41,30 +41,12 @@ const LoginForm = () => {
         Need to create an account? <Link to="/SignupForm">Sign Up</Link>
       </p>
 
-      <p className="text">Or login using</p>
-
-      <div className="alt-login">
-        <div className="facebook"></div>
-        {/*<div className="google">
-          <GoogleLogin
-            className="blue"
-            clientId="79474543031-tmjo35916ufn421ej3u1i2ljao2apr4s.apps.googleusercontent.com"
-            buttonText=""
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={'single_host_origin'}
-            isSignedIn={false}
-            icon={false}
-            theme="dark"
-          />
-        </div>*/}
-      </div>
-
       <div className={popupStyle}>
         <h3>Login Failed</h3>
         <p>Username or password incorrect</p>
       </div>
     </div>
+  
   );
 };
 

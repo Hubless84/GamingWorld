@@ -15,7 +15,7 @@ function HomePage() {
         <span className="neon-line"></span>
       </h2>
 
-      <div className="container">
+      <div className="homepage-container">
         <table>
           <tbody>
             <tr className='DotaRow'>

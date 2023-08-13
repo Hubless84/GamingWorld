@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: auto;
 }
 
 .cartItem {
@@ -27,14 +26,12 @@
   width: 100%;
   font-size: 12px;
   position: center;
-  margin-left: 20px;
 }
 
 .countHandler input {
   width: 30px;
   text-align: center;
   font-weight: bolder;
-  margin-top: 10px;
 }
 
 .checkout button {

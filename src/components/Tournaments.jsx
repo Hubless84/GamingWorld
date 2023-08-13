@@ -5,7 +5,7 @@ import './Tournaments.css';
 const Tournaments = () => {
     return (
       <div>
-        <div className="container">
+        <div className="tournaments-container">
           <a href="/FifaMain" className="section">
             <div className="section-text">Fifa 23</div>
           </a>

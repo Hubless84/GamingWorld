@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import { InstagramLogo,FacebookLogo,TwitterLogo } from 'phosphor-react';
 
 const Footer = () => {
   return (
@@ -8,13 +9,13 @@ const Footer = () => {
         <h3>Follow Us</h3>
         <div className="social-media-links">
           <a href="https://www.facebook.com/example">
-            <img src="./images/Facebook-Logo.png" alt="Facebook" />
+              <TwitterLogo size={24} />
           </a>
           <a href="https://www.twitter.com/example">
-            <img src="twitter-logo.png" alt="Twitter" />
+            <FacebookLogo size={24} />
           </a>
           <a href="https://www.instagram.com/example">
-            <img src="instagram-logo.png" alt="Instagram" />
+              <InstagramLogo size={24} />
           </a>
         </div>
       </div>

@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import "./LoginForm.css";
+import "./ContactForm.css";
 
 const ContactForm = () => {
 
@@ -12,7 +12,7 @@ const ContactForm = () => {
       };
 
     return (
-        <div className="cover">
+        <div className="contact-cover">
             <h1>Contact</h1>
 			<input type="text" name="firstname" placeholder="First name" />
             <input type="text" name="lastname" placeholder="Last name"/>

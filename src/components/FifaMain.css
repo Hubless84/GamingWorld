@@ -6,6 +6,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  padding-top: 140px;
+  padding-bottom: 140px;
 }
 
 header {
@@ -16,6 +18,8 @@ nav {
   display: flex;
   background-color: #333;
   margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
   }
   
   nav ul {
@@ -26,7 +30,8 @@ nav {
   
   nav ul li {
     display: inline-block;
-    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
   }
   
   nav ul li a {
