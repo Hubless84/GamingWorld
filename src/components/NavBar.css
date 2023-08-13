@@ -7,7 +7,6 @@
     padding: 5px;
     z-index: 100;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100px;
     border-radius: 5px;
@@ -15,11 +14,11 @@
   }
 
   .search-field {
-    width: 30px;
+    width: 20px;
   }
   
   .search-field img {
-    width: 30px;
+    width: 20px;
   }
   .logo img {
     width: 160px;
@@ -41,12 +40,14 @@
     list-style: none;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   
   .nav-links li {
-    margin-left: 10px;
     border-left: 1px solid #fff;
-    padding-left: 10px;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
   }
   
   .nav-links li:first-child {
@@ -58,10 +59,12 @@
     text-decoration: none;
     color: #fff;
     transition: color 0.3s ease;
+    justify-content: center;
+    align-items: center;
   }
   
   .nav-links a:hover {
-    color: #ffd700;
+    color: #3498db;
   }
 
   .login-register {
@@ -80,12 +83,12 @@
   }
   .cart_container {
     background-color: #3498db;
-    color: #000;
+    color: #000000;
     font-size: 9px;
     padding: 1px 3px;
     border-radius: 50%;
     right: -5px;
-    margin-left: -10;
+    margin-left: -10px;
   }
   
   
