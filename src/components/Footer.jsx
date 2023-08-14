@@ -8,10 +8,10 @@ const Footer = () => {
       <div className="footer-section">
         <h3>Follow Us</h3>
         <div className="social-media-links">
-          <a href="https://www.facebook.com/example">
+          <a href="https://www.twitter.com/example">
               <TwitterLogo size={24} />
           </a>
-          <a href="https://www.twitter.com/example">
+          <a href="https://www.facebook.com/groups/593235252888066">
             <FacebookLogo size={24} />
           </a>
           <a href="https://www.instagram.com/example">
