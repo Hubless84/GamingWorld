@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'phosphor-react';
 import { ShopContext } from "./Shop-Context";
@@ -22,7 +23,7 @@ const NavBar = () => {
       <div className="search-field">
         <input type="text" placeholder="Search" />
         <button type="submit">
-          <img src={(require('../images/search-icon.png'))} alt='logo'/>
+          <FaSearch/>
         </button>
       </div>
       <ul className="nav-links">
