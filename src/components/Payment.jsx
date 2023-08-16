@@ -53,6 +53,7 @@ const Payment = () => {
   return (
     <form className="payment-form" onSubmit={handleSubmit}>
         <input type="text" name="name" placeholder="Card name holder" />
+        <input type="text" name="city" placeholder="City" />
         <input type="text" name="address" placeholder="Address" />
         <input type="phone" name="phone" placeholder="Enter CellPhone Number" />
         <input type="email" name="email" placeholder="Enter Email" required />
