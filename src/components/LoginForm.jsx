@@ -15,27 +15,36 @@ const LoginForm = () => {
   }, []);
 
   const [popupStyle, showPopup] = useState("hide");
+  const [showPassword, setShowPassword] = useState(false);
 
   const popup = () => {
     showPopup("login-popup");
     setTimeout(() => showPopup("hide"), 3000);
   };
 
-  /*const onSuccess = e => {
-    alert("User signed in");
-    console.log(e);
-  }; */
-
-  /*const onFailure = e => {
-    alert("User sign in Failed");
-    console.log(e);
-  }; */
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className="login-cover">
       <h1>Login</h1>
-      <input type="text" placeholder="Enter username"/>
-      <input type="password" placeholder="Enter password"/>
+      <input type="text" name="username" placeholder="Enter username"/>
+        <input
+          type={showPassword ? "text" : "password"}
+          name="pwd"
+          id="pwd"
+          placeholder="Password"
+        />
+        <div className="chk-box">
+        <input
+          type="checkbox"
+          id="chk"
+          checked={showPassword}
+          onChange={toggleShowPassword}
+        />
+        Show Password
+        </div>
       <div className="buttons" onClick={popup}>Sign in</div>
       <p>
         Need to create an account? <Link to="/SignupForm">Sign Up</Link>
@@ -46,7 +55,6 @@ const LoginForm = () => {
         <p>Username or password incorrect</p>
       </div>
     </div>
-  
   );
 };
 
