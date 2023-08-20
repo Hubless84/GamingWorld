@@ -36,10 +36,10 @@ const SignupForm = () => {
     return (
             <div className="signup-cover">
                 <h1>Signup</h1>
-                <input type="text" placeholder="Enter Your Fullname" />
-                <input type="text" placeholder="Create username" />
-                <input type="email" placeholder="Enter Email" />
-                <input type="password" placeholder="Enter password" />
+                <input type="text" name="name" placeholder="Enter Your Fullname" />
+                <input type="text" name="username" placeholder="Create Username" required/>
+                <input type="email" name="email" placeholder="Enter Email" required/>
+                <input type="password" name="pswd" placeholder="Enter Password" required/>
                 <div className="buttons" onClick={popup}>Sign up</div>
                 <p>
                     Already have an account? <Link to="/LoginForm">Login</Link>

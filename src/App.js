@@ -18,6 +18,7 @@ import Payment from './components/Payment';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import {Cart} from './components/Cart';
+import TestConnection from './components/TestConnection';
 import "./App.css"
 
 
@@ -28,24 +29,25 @@ function App() {
     <BrowserRouter>
       <ShopContextProvider>
         <NavBar/>
-          <Routes>
-            <Route path="/" element ={<HomePage/>} />
-            <Route path="/BeAPro" element ={<BeAPro/>} />
-            <Route path="/AboutGames" element ={<AboutGames/>} />
-            <Route path="/Tournaments" element ={<Tournaments/>} />
-            <Route path="/FifaMain" element ={<FifaMain/>} />
-            <Route path="/DotaMain" element ={<DotaMain/>} />
-            <Route path="/HomePage" element={<HomePage/>} />
-            <Route path="/LoginForm" element={<LoginForm/>} />
-            <Route path="/Store" element={<Store/>} />
-            <Route path="/SignupForm" element={<SignupForm/>} />
-            <Route path="/ContactForm" element={<ContactForm/>} />
-            <Route path="/Cart" element={<Cart/>} />
-            <Route path="/Payment" element={<Elements stripe={stripePromise}><Payment /></Elements>} />
-            <Route path="*" element={<ErrorPage/>} />
-          </Routes>
-        <Footer/>
-      </ShopContextProvider>
+            <Routes>
+              <Route path="/" element ={<HomePage/>} />
+              <Route path="/BeAPro" element ={<BeAPro/>} />
+              <Route path="/AboutGames" element ={<AboutGames/>} />
+              <Route path="/Tournaments" element ={<Tournaments/>} />
+              <Route path="/FifaMain" element ={<FifaMain/>} />
+              <Route path="/DotaMain" element ={<DotaMain/>} />
+              <Route path="/HomePage" element={<HomePage/>} />
+              <Route path="/LoginForm" element={<LoginForm/>} />
+              <Route path="/Store" element={<Store/>} />
+              <Route path="/SignupForm" element={<SignupForm/>} />
+              <Route path="/ContactForm" element={<ContactForm/>} />
+              <Route path="/Cart" element={<Cart/>} />
+              <Route path="/Payment" element={<Elements stripe={stripePromise}><Payment /></Elements>} />
+              <Route path="*" element={<ErrorPage/>} />
+            </Routes>
+          <Footer/>
+        </ShopContextProvider>
+      <TestConnection/>
     </BrowserRouter>
   );
 }
