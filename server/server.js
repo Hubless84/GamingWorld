@@ -34,7 +34,7 @@ const pool = new Pool({
 
 // Example API endpoint for user registration
 app.post('/api/register', async (req, res) => {
-  const { name, username, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
     // Hash the password before storing in the database
@@ -42,7 +42,7 @@ app.post('/api/register', async (req, res) => {
 
     // Insert user into the database
     const query = 'INSERT INTO users (username, email, password) VALUES ($1, $2, $3)';
-    await pool.query(query, [name, username, email, hashedPassword]);
+    await pool.query(query, [username, email, hashedPassword]);
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
