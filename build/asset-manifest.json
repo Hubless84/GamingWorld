@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ac5f0cb0.css",
+    "main.js": "/static/js/main.a515cdca.js",
+    "static/media/CSGO.png": "/static/media/CSGO.e832c278da9b237b679f.png",
+    "static/media/Lol.jpeg": "/static/media/Lol.e59a1c6ecdfc7e631883.jpeg",
+    "static/media/product4.png": "/static/media/product4.f7327892492ec335b9a3.png",
+    "static/media/Fifa23.jpeg": "/static/media/Fifa23.8b2ef433caabf269cf1c.jpeg",
+    "static/media/product7.jpg": "/static/media/product7.b92bd9d780e0046dfdf9.jpg",
+    "static/media/GamingWorld.png": "/static/media/GamingWorld.fdd6ad638d83e8eded5f.png",
+    "static/media/product15.jpg": "/static/media/product15.362135eca86bb610c78d.jpg",
+    "static/media/Dota2.jpeg": "/static/media/Dota2.3f86da6fc3a55edcb73c.jpeg",
+    "static/media/product9.jpg": "/static/media/product9.36e1a36311f857a55ea1.jpg",
+    "static/media/product5.jpg": "/static/media/product5.68ed0a7c48709d316a23.jpg",
+    "static/media/product8.jpg": "/static/media/product8.30626c2a43d32e2a6204.jpg",
+    "static/media/product14.jpg": "/static/media/product14.da929e7c284edbba7800.jpg",
+    "static/media/product13.jpg": "/static/media/product13.f3f8233e88b02e48d8dd.jpg",
+    "static/media/product17.jpg": "/static/media/product17.1079aeb6dbf25bdfea51.jpg",
+    "static/media/product2.jpg": "/static/media/product2.52d369389f7a0741b42b.jpg",
+    "static/media/product1.jpg": "/static/media/product1.e13987c25c51dc314c8f.jpg",
+    "static/media/product16.jpg": "/static/media/product16.22ecdd88ef90a2011fdb.jpg",
+    "static/media/product11.jpg": "/static/media/product11.ee0b563ac0aa600b87d1.jpg",
+    "static/media/product12.jpg": "/static/media/product12.d56bb8c9c4ebc97bf50a.jpg",
+    "static/media/Facebook-Logo.png": "/static/media/Facebook-Logo.fe3edacd7d640cb4879b.png",
+    "static/media/product10.jpg": "/static/media/product10.61935e56d8f664c4f71c.jpg",
+    "static/media/RolexLight.woff2": "/static/media/RolexLight.abd5c539d0d3d699e896.woff2",
+    "index.html": "/index.html",
+    "main.ac5f0cb0.css.map": "/static/css/main.ac5f0cb0.css.map",
+    "main.a515cdca.js.map": "/static/js/main.a515cdca.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac5f0cb0.css",
+    "static/js/main.a515cdca.js"
+  ]
+}
