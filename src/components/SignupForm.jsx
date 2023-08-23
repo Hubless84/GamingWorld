@@ -4,33 +4,38 @@ import "./SignupForm.css";
 import axios from "axios"; // Make sure you've installed axios using 'npm install axios'
 
 const SignupForm = () => {
-  const [popupStyle, showPopup] = useState("hide");
+  const [popupStyle, setPopupStyle] = useState("hide");
+  const [popupMessage, setPopupMessage] = useState("");
 
-  const popup = () => {
-    showPopup("login-popup");
-    setTimeout(() => showPopup("hide"), 3000);
+  const showPopup = (message) => {
+    setPopupMessage(message);
+    setPopupStyle("login-popup");
+    setTimeout(() => hidePopup(), 3000);
+  };
+
+  const hidePopup = () => {
+    setPopupStyle("hide");
+    setPopupMessage("");
   };
 
   const handleSignup = async () => {
     const username = document.querySelector('[name="username"]').value;
     const email = document.querySelector('[name="email"]').value;
     const password = document.querySelector('[name="password"]').value;
-  
-    // Send the signup data to the backend API endpoint
+
     try {
       await axios.post("/api/signup", { username, email, password });
-      alert("User registered successfully");
-      
+      showPopup("User registered successfully");
+
       // Clear input fields after successful registration
-      document.querySelector('[name="username"]').value = '';
-      document.querySelector('[name="email"]').value = '';
-      document.querySelector('[name="password"]').value = '';
+      document.querySelector('[name="username"]').value = "";
+      document.querySelector('[name="email"]').value = "";
+      document.querySelector('[name="password"]').value = "";
     } catch (error) {
       console.error("Error during user registration:", error);
-      alert("User registration failed");
+      showPopup("User registration failed");
     }
   };
-  
 
   return (
     <div className="signup-cover">
@@ -46,8 +51,8 @@ const SignupForm = () => {
       </p>
 
       <div className={popupStyle}>
-        <h3>Creating User Failed</h3>
-        <p>One of the fields is incorrect</p>
+        <h3>Registration Status</h3>
+        <p>{popupMessage}</p>
       </div>
     </div>
   );
