@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignupForm.css";
-import axios from "axios"; // Make sure you've installed axios using 'npm install axios'
+import axios from "axios"; 
 
 const SignupForm = () => {
   const [popupStyle, showPopup] = useState("hide");

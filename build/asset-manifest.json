@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ac5f0cb0.css",
-    "main.js": "/static/js/main.a515cdca.js",
+    "main.js": "/static/js/main.6c5fd563.js",
     "static/media/CSGO.png": "/static/media/CSGO.e832c278da9b237b679f.png",
     "static/media/Lol.jpeg": "/static/media/Lol.e59a1c6ecdfc7e631883.jpeg",
     "static/media/product4.png": "/static/media/product4.f7327892492ec335b9a3.png",
@@ -26,10 +26,10 @@
     "static/media/RolexLight.woff2": "/static/media/RolexLight.abd5c539d0d3d699e896.woff2",
     "index.html": "/index.html",
     "main.ac5f0cb0.css.map": "/static/css/main.ac5f0cb0.css.map",
-    "main.a515cdca.js.map": "/static/js/main.a515cdca.js.map"
+    "main.6c5fd563.js.map": "/static/js/main.6c5fd563.js.map"
   },
   "entrypoints": [
     "static/css/main.ac5f0cb0.css",
-    "static/js/main.a515cdca.js"
+    "static/js/main.6c5fd563.js"
   ]
 }
