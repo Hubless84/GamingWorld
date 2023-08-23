@@ -1,5 +1,3 @@
-
-const bcrypt = require('bcrypt');
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,17 +9,9 @@ process.on('uncaughtException', function (err) {
   console.log(err);
 });
 
-
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-
-
- //TestConnection 
- app.get('/api/TestConnection', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.json({ message: 'Connected to backend successfully!' });
-});
 
 // PostgreSQL database connection
 const pool = new Pool({
@@ -32,17 +22,17 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Example API endpoint for user registration
-app.post('/api/register', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // Hash the password before storing in the database
-    const hashedPassword = await bcrypt.hash(password, 10);
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: 'Please fill in all fields' });
+    }
 
-    // Insert user into the database
-    const query = 'INSERT INTO users (username, email, password) VALUES ($1, $2, $3)';
-    await pool.query(query, [username, email, hashedPassword]);
+    // Insert user into the RegisteredUser table
+    const query = 'INSERT INTO RegisteredUser (person_uid, Username, Password, RegistrationDate) VALUES (uuid_generate_v4(), $1, $2, NOW())';
+    await pool.query(query, [username, password]);
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
@@ -51,8 +41,37 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello, Express server is running!');
+
+// Checking for user login credentials
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Check if the username and password match a registered user
+    const query = 'SELECT * FROM RegisteredUser WHERE Username = $1 AND Password = $2';
+    const result = await pool.query(query, [username, password]);
+
+    if (result.rowCount === 1) {
+      res.status(200).json({ success: true, message: 'Login successful' });
+    } else {
+      res.status(401).json({ success: false, message: 'Incorrect username or password' });
+    }
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ success: false, message: 'An error occurred' });
+  }
+});
+
+
+// app.get('/', (req, res) => {
+//   res.send('Hello, Express server is running!');
+// });
+
+
+ //TestConnection 
+ app.get('/api/TestConnection', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.json({ message: 'Connected to backend successfully!' });
 });
 
 
