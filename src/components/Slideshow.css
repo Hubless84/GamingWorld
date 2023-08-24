@@ -1,0 +1,6 @@
+.slideshow-image {
+    width: 500px; 
+    height: 300px; 
+    object-fit: fill;
+    border-radius: 15px;
+  }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import Slideshow from './Slideshow';
 import Dota2 from '../images/HomePage/Dota2.jpeg';
 import Fifa23 from '../images/HomePage/Fifa23.jpeg';
 import CSGO from '../images/HomePage/CSGO.png';
@@ -96,7 +97,7 @@ function HomePage() {
           </div>
         </div>
         
-          
+          <hr className="horizontal-line" />
           <h1 className="theader">Latest Tournaments</h1>
           <div className="hometour-container">
             <div className="main-content">
@@ -153,8 +154,17 @@ function HomePage() {
             <p>
                 For more Tournaments click <Link to="/Tournaments">here</Link>
            </p>
-            
-            </div>         
+          </div>     
+          
+          <hr className="horizontal-line" />
+          <div className="slideshow-title">
+            <h1>Our best selling products</h1>
+          </div> 
+            <div className="slideshow-container">
+            <Link to="/Store">
+                <Slideshow />
+            </Link>
+            </div> 
       
         </>
   );

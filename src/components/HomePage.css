@@ -99,6 +99,32 @@ body {
     align-items: center;
     margin-top: 20px;
   }
+  
   .main-content {
     width: 80%;
+  }
+
+  .horizontal-line {
+    margin: 40px auto; 
+    border: none;
+    border-top: 2px solid #ddd; 
+    width: 95%; 
+  }
+
+  .slideshow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;  
+    margin-top: 30px; /* Adjust margin as needed */
+  }
+
+  .slideshow-title{
+    color:black;
+    text-decoration: black;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 15px;
   }
