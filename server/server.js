@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'GamingWorld',
+  database: 'gamingworld',
   password: 'postgres',
   port: 5432,
 });
