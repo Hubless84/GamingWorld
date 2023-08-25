@@ -128,3 +128,13 @@ body {
     margin-top: 40px;
     font-size: 15px;
   }
+
+  .sponsor-title{
+    color:black;
+    text-decoration: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+  }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import Slideshow from './Slideshow';
+import SponsorLogos from './Sponsors';
 import Dota2 from '../images/HomePage/Dota2.jpeg';
 import Fifa23 from '../images/HomePage/Fifa23.jpeg';
 import CSGO from '../images/HomePage/CSGO.png';
@@ -164,7 +165,17 @@ function HomePage() {
             <Link to="/Store">
                 <Slideshow />
             </Link>
-            </div> 
+            </div>  
+            
+            <hr className="horizontal-line" />
+            <div className="sponsor-title">
+            <h1>Our Sponsors</h1>
+            </div>
+            <div>
+            <SponsorLogos /> 
+            </div>
+
+          
       
         </>
   );
