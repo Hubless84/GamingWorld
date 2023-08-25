@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import AboutGames from './components/AboutGames';
 import Tournaments from "./components/Tournaments";
@@ -18,17 +18,17 @@ import Payment from './components/Payment';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import {Cart} from './components/Cart';
-import TestConnection from './components/TestConnection';
 import "./App.css"
 
-
-const stripePromise = loadStripe('YOUR_STRIPE_PUBLIC_KEY');
-
 function App() {
+  const stripePromise = loadStripe('YOUR_STRIPE_PUBLIC_KEY');
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+
   return (
     <BrowserRouter>
       <ShopContextProvider>
-        <NavBar/>
+      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
             <Routes>
               <Route path="/" element ={<HomePage/>} />
               <Route path="/BeAPro" element ={<BeAPro/>} />
@@ -37,7 +37,7 @@ function App() {
               <Route path="/FifaMain" element ={<FifaMain/>} />
               <Route path="/DotaMain" element ={<DotaMain/>} />
               <Route path="/HomePage" element={<HomePage/>} />
-              <Route path="/LoginForm" element={<LoginForm/>} />
+              <Route path="/LoginForm" element={<LoginForm setLoggedInUser={setLoggedInUser} />} />
               <Route path="/Store" element={<Store/>} />
               <Route path="/SignupForm" element={<SignupForm/>} />
               <Route path="/ContactForm" element={<ContactForm/>} />

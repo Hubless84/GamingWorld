@@ -92,6 +92,14 @@
     right: -5px;
     margin-left: -10px;
   }
+  .user-button{
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   
   
   

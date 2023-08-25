@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import axios from "axios"; // Make sure you've installed axios using 'npm install axios'
 
-const LoginForm = () => {
+const LoginForm = ({ setLoggedInUser }) => {
   const [popupStyle, setPopupStyle] = useState("hide");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -20,6 +21,8 @@ const LoginForm = () => {
       const response = await axios.post("/api/login", { username, password });
       if (response.data.success) {
         alert("Login successful");
+        setLoggedInUser(username);
+        navigate("/HomePage");
       } else {
         setPopupStyle("login-popup");
         setTimeout(() => setPopupStyle("hide"), 3000);

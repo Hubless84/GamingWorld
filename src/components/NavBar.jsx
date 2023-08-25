@@ -5,25 +5,36 @@ import { ShoppingCart } from 'phosphor-react';
 import { ShopContext } from "./Shop-Context";
 import './NavBar.css';
 
-const NavBar = () => {
+const NavBar = ({ loggedInUser, setLoggedInUser }) => {
   const { getTotalCartItemsCount } = useContext(ShopContext);
   const cartItemCount = getTotalCartItemsCount();
 
+  const handleLogout = () => {
+    // Perform logout actions, such as clearing user data and state
+    setLoggedInUser(null);
+    // You might also want to redirect to a logout page or the homepage
+  };
+
   return (
     <nav className="navbar">
-     
-     <div className="login-register">
-        <Link to="/LoginForm">
+      <div className="login-register">
+        {loggedInUser ? (
+          <button className="user-button" onClick={handleLogout}>
+            {loggedInUser} (Logout)
+          </button>
+        ) : (
+          <Link to="/LoginForm">
             <button className="login-button">Login/Register</button>
-        </Link>
+          </Link>
+        )}
       </div>
       <div className="logo">
-        <img src={(require('../images/GamingWorld.png'))} alt="logo" />
+        <img src={require('../images/GamingWorld.png')} alt="logo" />
       </div>
       <div className="search-field">
         <input type="text" placeholder="Search" />
         <button type="submit">
-          <FaSearch/>
+          <FaSearch />
         </button>
       </div>
       <ul className="nav-links">
@@ -46,6 +57,5 @@ const NavBar = () => {
     </nav>
   );
 };
-
 
 export default NavBar;
