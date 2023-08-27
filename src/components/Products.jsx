@@ -15,18 +15,21 @@ import product14 from "../products/product14.jpg";
 import product15 from "../products/product15.jpg";
 import product16 from "../products/product16.jpg";
 import product17 from "../products/product17.jpg";
+import product18 from "../products/product18.png";
+import product19 from "../products/product19.jpg";
+import product20 from "../products/product20.jpg";
 
 export const Products = [
   {
     id: 1,
-    productName: "Hyperx Cloud 2 red",
+    productName: "Hyperx Cloud 2 red Gaming Headset",
     price: 300.0,
     productImage: product1,
     type: 'Headphones'
   },
   {
     id: 2,
-    productName: "Logitech G332",
+    productName: "Logitech G332 Gaming Headset",
     price: 200.0,
     productImage: product2,
     type: 'Headphones'
@@ -114,7 +117,7 @@ export const Products = [
   {
     id: 13,
     productName: "Corsair K55 RGB PRO",
-    price: 164.0,
+    price: 174.0,
     productImage: product13,
     type: 'Keyboard',
   },
@@ -130,7 +133,7 @@ export const Products = [
   {
     id: 15,
     productName: "Dragon RGB GPDRA-K18",
-    price: 49.0,
+    price: 119.0,
     productImage: product15,
     type: 'Keyboard',
   },
@@ -138,17 +141,41 @@ export const Products = [
   {
     id: 16,
     productName: "Logitech G Pro Tenkeyless GX Blue Switch",
-    price: 379.0,
+    price: 670.0,
     productImage: product16,
     type: 'Keyboard',
   },
 
   {
     id: 17,
-    productName: "Logitech G Pro Tenkeyless GX Blue Switch",
-    price: 179.0,
+    productName: "Roccat Magma Membrane Gaming Keyboard RGB",
+    price: 210.0,
     productImage: product17,
     type: 'Keyboard',
+  },
+
+  {
+    id: 18,
+    productName: "SteelSeries rival 650 Gaming Mouse",
+    price: 423.0,
+    productImage: product18,
+    type: 'Mouse',
+  },
+
+  {
+    id: 19,
+    productName: "SteelSeries Arctis Pro Gaming Headset",
+    price: 730.0,
+    productImage: product19,
+    type: 'Headphones',
+  },
+
+  {
+    id: 20,
+    productName: "Corsair MM350 Champion Series Mouse - Medium Pad",
+    price: 81.0,
+    productImage: product20,
+    type: 'Gamepad',
   },
 
 
