@@ -138,3 +138,10 @@ body {
     margin-top: 10px;
     font-size: 15px;
   }
+
+  .sponsor-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }

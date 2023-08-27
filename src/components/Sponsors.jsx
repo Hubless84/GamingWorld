@@ -6,12 +6,16 @@ import sponsor4 from '../images/HomePage/sponsor4.png';
 import './Sponsors.css';
 
 const Sponsors = () => {
+  const sponsorLogos = [sponsor1, sponsor2, sponsor3, sponsor4];
+
   return (
     <div className="sponsor-logos">
-      <img src={sponsor1} alt="Sponsor 1" className="sponsor-logo" />
-      <img src={sponsor2} alt="Sponsor 2" className="sponsor-logo" />
-      <img src={sponsor3} alt="Sponsor 3" className="sponsor-logo" />
-      <img src={sponsor4} alt="Sponsor 3" className="sponsor-logo" />
+      {sponsorLogos.map((logo, index) => (
+        <React.Fragment key={index}>
+          <img src={logo} alt={`Sponsor ${index}`} className="sponsor-logo" />
+          {index !== sponsorLogos.length - 1 && <div className="vertical-line"></div>}
+        </React.Fragment>
+      ))}
     </div>
   );
 };

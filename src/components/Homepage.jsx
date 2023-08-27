@@ -169,14 +169,12 @@ function HomePage() {
             
             <hr className="horizontal-line" />
             <div className="sponsor-title">
-            <h1>Our Sponsors</h1>
+              <h1>Our Sponsors</h1>
             </div>
-            <div>
-            <SponsorLogos /> 
+            <div className="sponsor-container">
+                <SponsorLogos />
             </div>
-
-          
-      
+            
         </>
   );
 }
