@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import AboutGames from './components/AboutGames';
 import Tournaments from "./components/Tournaments";
@@ -21,8 +21,17 @@ import {Cart} from './components/Cart';
 import "./App.css"
 
 function App() {
+
   const stripePromise = loadStripe('YOUR_STRIPE_PUBLIC_KEY');
   const [loggedInUser, setLoggedInUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      setLoggedInUser(JSON.parse(storedUser));
+    }
+  }, []);
+  
 
 
   return (

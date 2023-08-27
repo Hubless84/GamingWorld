@@ -10,7 +10,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
   const cartItemCount = getTotalCartItemsCount();
 
   const handleLogout = () => {
-    // Perform logout actions, such as clearing user data and state
+    localStorage.removeItem('loggedInUser');
     setLoggedInUser(null);
     // You might also want to redirect to a logout page or the homepage
   };
@@ -19,7 +19,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
     <nav className="navbar">
       <div className="login-register">
         {loggedInUser ? (
-          <button className="user-button" onClick={handleLogout}>
+          <button className="login-button" onClick={handleLogout}>
             {loggedInUser} (Logout)
           </button>
         ) : (

@@ -22,7 +22,8 @@ const LoginForm = ({ setLoggedInUser }) => {
       if (response.data.success) {
         alert("Login successful");
         setLoggedInUser(username);
-        navigate("/HomePage");
+        localStorage.setItem('loggedInUser', JSON.stringify(username));
+        navigate('/');
       } else {
         setPopupStyle("login-popup");
         setTimeout(() => setPopupStyle("hide"), 3000);
