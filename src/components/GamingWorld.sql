@@ -5,7 +5,7 @@ CREATE TABLE Person (
     person_uid UUID NOT NULL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255),
-    phone_number VARCHAR(15),
+    phone_number VARCHAR(10),
     registration_status VARCHAR(15) NOT NULL CHECK (
         registration_status IN ('Unregistered', 'Registered')
     ),
@@ -81,6 +81,13 @@ CREATE TABLE Payments (
     card_number VARCHAR(19) NOT NULL REFERENCES CreditCards(card_number),
     price MONEY NOT NULL CHECK (price > '0'::MONEY),
     payment_date DATE NOT NULL
+);
+CREATE TABLE Contact (
+    contact_uid uuid PRIMARY KEY,
+    first_name VARCHAR(15),
+    last_name VARCHAR(15),
+    phone_number VARCHAR(10) NOT NULL,
+    email VARCHAR(255) NOT NULL
 );
 -- Inserting data into Person
 INSERT INTO Person (

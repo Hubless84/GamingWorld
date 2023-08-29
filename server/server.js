@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const fetch = require('node-fetch');
+const uuid = require('uuid');
 
 const app = express();
 
@@ -54,7 +55,7 @@ const riotApiKey = 'RGAPI-258569f6-dae6-4d97-b4ce-4b8e81d9cf6a';
         
         const response = await fetch(apiURL, {
             headers: {
-                'X-Riot-Token': riotApiKey, // Replace with your Riot API key
+                'X-Riot-Token': riotApiKey, 
             },
         });
         
@@ -65,7 +66,6 @@ const riotApiKey = 'RGAPI-258569f6-dae6-4d97-b4ce-4b8e81d9cf6a';
         res.status(500).json({ error: 'An error occurred' });
     }
 });
-
 
 
 app.post('/api/signup', async (req, res) => {
@@ -108,8 +108,24 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// Checking for user contact credentials
+app.post('/api/add-contact', async (req, res) => {
+  const { first_name, last_name, phone_number, email } = req.body;
 
+  try {
+    if (!first_name || !last_name || !phone_number || !email) {
+      return res.status(400).json({ message: 'Please fill in all fields' });
+    }
+    // Insert contact details into the database
+    const query = 'INSERT INTO Contact (contact_uid, first_name, last_name, phone_number, email) VALUES (uuid_generate_v4(), $1, $2, $3, $4)';
+    await pool.query(query, [first_name, last_name, phone_number, email]);
 
+    res.status(201).json({ message: 'Contact added successfully' });
+  } catch (error) {
+    console.error('Error during contact insertion:', error);
+    res.status(500).json({ message: 'An error occurred' });
+  }
+});
 
 // Start the server
 const port = process.env.PORT || 5000; 
