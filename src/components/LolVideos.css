@@ -1,0 +1,50 @@
+/* LolVideos.css */
+
+.lol-videos-container {
+    padding: 20px;
+  }
+  
+  .lol-videos-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3498db; /* Beautiful Blue Color */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    position: relative; /* To position the underline */
+  }
+  
+  .lol-videos-title::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #3498db; /* Same Beautiful Blue Color */
+    position: absolute;
+    bottom: -5px; /* Adjust to control the position of the underline */
+    left: 0;
+  }
+  
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .video-item {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio for video */
+    overflow: hidden;
+    border: 2px solid #ff6b6b; /* Vibrant Red-Orange Border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  

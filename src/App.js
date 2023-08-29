@@ -10,15 +10,18 @@ import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import ContactForm from "./components/ContactForm";
 import Store from "./components/Store";
-import FifaMain from "./components/FifaMain";
+import ValorantMain from "./components/ValorantMain";
 import BeAPro from "./components/BeAPro";
-import DotaMain from "./components/DotaMain";
+import LolMain from "./components/LolMain";
+import LolVideos from './components/LolVideos';
+import LolNews from './components/LolNews';
 import { ShopContextProvider } from "./components/Shop-Context";
 import Payment from './components/Payment';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import {Cart} from './components/Cart';
 import "./App.css"
+
 
 function App() {
 
@@ -43,8 +46,10 @@ function App() {
               <Route path="/BeAPro" element ={<BeAPro/>} />
               <Route path="/AboutGames" element ={<AboutGames/>} />
               <Route path="/Tournaments" element ={<Tournaments/>} />
-              <Route path="/FifaMain" element ={<FifaMain/>} />
-              <Route path="/DotaMain" element ={<DotaMain/>} />
+              <Route path="/ValorantMain" element ={<ValorantMain/>} />
+              <Route path="/LolMain" element ={<LolMain/>} />
+              <Route path="/LolVideos" element ={<LolVideos/>} />
+              <Route path="/LolNews" element ={<LolNews/>} />
               <Route path="/HomePage" element={<HomePage/>} />
               <Route path="/LoginForm" element={<LoginForm setLoggedInUser={setLoggedInUser} />} />
               <Route path="/Store" element={<Store/>} />
