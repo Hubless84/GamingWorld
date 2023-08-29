@@ -2,6 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+const fetch = require('node-fetch');
 
 const app = express();
 
@@ -21,6 +22,51 @@ const pool = new Pool({
   password: 'postgres',
   port: 5432,
 });
+
+
+// // Riot API handling
+const riotBaseURL = 'https://euw1.api.riotgames.com';
+const riotApiKey = 'RGAPI-258569f6-dae6-4d97-b4ce-4b8e81d9cf6a';
+
+  // LOL champion-rotation api
+
+  app.get('/api/lol-champion-rotations', async (req, res) => {
+    try {
+      const apiURL = `${riotBaseURL}/lol/platform/v3/champion-rotations`;
+      const response = await fetch(apiURL, {
+        headers: {
+          'X-Riot-Token': riotApiKey,
+        },
+      });
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      console.error('Error fetching data', error);
+      res.status(500).json({ error: 'An error occurred' });
+    }
+  });
+
+  // LOL Summoner-v4 API (LolMain)
+  app.get('/api/lol/summoner', async (req, res) => {
+    try {
+        const { name } = req.query;
+        const apiURL = `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}`;
+        
+        const response = await fetch(apiURL, {
+            headers: {
+                'X-Riot-Token': riotApiKey, // Replace with your Riot API key
+            },
+        });
+        
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        console.error('Error fetching data', error);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
+
 
 app.post('/api/signup', async (req, res) => {
   const { username, email, password } = req.body;
@@ -63,16 +109,6 @@ app.post('/api/login', async (req, res) => {
 });
 
 
-// app.get('/', (req, res) => {
-//   res.send('Hello, Express server is running!');
-// });
-
-
- //TestConnection 
- app.get('/api/TestConnection', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.json({ message: 'Connected to backend successfully!' });
-});
 
 
 // Start the server

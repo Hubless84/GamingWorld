@@ -1,7 +1,7 @@
 import React from 'react';
-import './DotaMain.css';
+import './LolMain.css';
 
-const DotaMain = () => {
+const LolMain = () => {
   return (
     <div>
       {/* Navbar */}
@@ -59,4 +59,4 @@ const DotaMain = () => {
   );
 };
 
-export default DotaMain;
+export default LolMain;

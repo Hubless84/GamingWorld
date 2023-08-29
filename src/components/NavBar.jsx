@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'phosphor-react';
 import { ShopContext } from "./Shop-Context";
@@ -30,12 +29,6 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
       </div>
       <div className="logo">
         <img src={require('../images/GamingWorld.png')} alt="logo" />
-      </div>
-      <div className="search-field">
-        <input type="text" placeholder="Search" />
-        <button type="submit">
-          <FaSearch />
-        </button>
       </div>
       <ul className="nav-links">
         <li><Link to="/HomePage">Home</Link></li>
