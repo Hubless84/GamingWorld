@@ -26,12 +26,12 @@ function LolMain() {
                 <a href="./LolVideos">Videos</a>
                 <a href="./LolNews">Latest News</a>
             </div>
-            <h1>League of Legends Player Search</h1>
-            <input type="text" onChange={e => setSearchText(e.target.value)} />
-            <button onClick={searchForPlayer}>Search</button>
+            <h1 className='lol-h1'> League of Legends Player Search</h1>
+            <input className='lol-input' type="text" onChange={e => setSearchText(e.target.value)} />
+            <button className='lol-button' onClick={searchForPlayer}>Search</button>
             {JSON.stringify(playerData) !== '{}' ? (
                 <div>
-                    <h2>Player Info</h2>
+                    <h2 className='lol-h2'>Player Info</h2>
                     <p>Name: {playerData.name}</p>
                     <p>Summoner Level: {playerData.summonerLevel}</p>
                     <img className='lol-img' src={`http://ddragon.leagueoflegends.com/cdn/13.16.1/img/profileicon/${playerData.profileIconId}.png`} alt="Profile Icon" />
