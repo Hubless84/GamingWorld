@@ -59,6 +59,7 @@ CREATE TABLE RegisteredUser (
     person_uid UUID PRIMARY KEY REFERENCES Person(person_uid),
     Username VARCHAR(255) NOT NULL,
     Password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
     RegistrationDate DATE,
     UNIQUE (Username)
 );

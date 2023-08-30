@@ -24,6 +24,14 @@ const SignupForm = () => {
     const password = document.querySelector('[name="password"]').value;
 
     try {
+      // Check if username or email already exists
+      const checkUserResponse = await axios.get(`/api/check-user?username=${username}&email=${email}`);
+      if (checkUserResponse.data.exists) {
+        showPopup("Username or email already exists");
+        return;
+      }
+
+      // If not exists, proceed with user registration
       await axios.post("/api/signup", { username, email, password });
       showPopup("User registered successfully");
 

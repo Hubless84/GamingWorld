@@ -77,8 +77,8 @@ app.post('/api/signup', async (req, res) => {
     }
 
     // Insert user into the RegisteredUser table
-    const query = 'INSERT INTO RegisteredUser (person_uid, Username, Password, RegistrationDate) VALUES (uuid_generate_v4(), $1, $2, NOW())';
-    await pool.query(query, [username, password]);
+    const query = 'INSERT INTO RegisteredUser (person_uid, Username, Password, RegistrationDate,email) VALUES (uuid_generate_v4(), $1, $2, NOW(),$3)';
+    await pool.query(query, [username, password,email]);
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
@@ -105,6 +105,23 @@ app.post('/api/login', async (req, res) => {
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).json({ success: false, message: 'An error occurred' });
+  }
+});
+
+// Adding a new endpoint to check if a user already exists
+app.get('/api/check-user', async (req, res) => {
+  const { username, email } = req.query;
+
+  try {
+    // Check if the username or email already exists in the database
+    const query = 'SELECT EXISTS(SELECT 1 FROM RegisteredUser WHERE Username = $1 OR Email = $2)';
+    const result = await pool.query(query, [username, email]);
+    const exists = result.rows[0].exists;
+
+    res.json({ exists });
+  } catch (error) {
+    console.error('Error checking user:', error);
+    res.status(500).json({ error: 'An error occurred' });
   }
 });
 

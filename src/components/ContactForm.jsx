@@ -3,13 +3,26 @@ import axios from 'axios';
 import "./ContactForm.css";
 
 const ContactForm = () => {
-    const [popupStyle, showPopup] = useState("hide");
+    const [popupStyle, setPopupStyle] = useState("hide");
+    const [popupMessage, setPopupMessage] = useState("");
+
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
         phone_number: "",
         email: ""
     });
+
+    const showPopup = (message) => {
+        setPopupMessage(message);
+        setPopupStyle("login-popup");
+        setTimeout(() => hidePopup(), 3000);
+      };
+
+      const hidePopup = () => {
+        setPopupStyle("hide");
+        setPopupMessage("");
+      };
 
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -21,29 +34,25 @@ const ContactForm = () => {
 
         try {
             const phoneNumber = formData.phone_number;
+
             if (formData.first_name===""){
-                showPopup("failure-popup");
-                setTimeout(() => showPopup("hide"), 3000);
+                showPopup("First name input is empty");
                 return;
             }
             if (formData.last_name==="" ){
-                showPopup("failure-popup");
-                setTimeout(() => showPopup("hide"), 3000);
+                showPopup("Last name input is empty");
                 return;
             }
             if(phoneNumber.length > 10){
-                showPopup("failure-popup");
-                setTimeout(() => showPopup("hide"), 3000);
+                showPopup("Phone number is incorrect");
                 return;
             }  
             if(!/^\d+$/.test(phoneNumber)){
-                showPopup("failure-popup");
-                setTimeout(() => showPopup("hide"), 3000);
+                showPopup("Phone number is incorrect");
                 return;
             }
             if(!isValidEmail(formData.email)){
-                showPopup("failure-popup");
-                setTimeout(() => showPopup("hide"), 3000);
+                showPopup("emaill is incorrect");
                 return;
             }
 
@@ -73,12 +82,10 @@ const ContactForm = () => {
 			<div className="buttons" onClick={handleSubmit}>Add Contact</div>
         
             <div className={popupStyle}>
-                {popupStyle === "contact-popup" ? (
-                <p>Contact Added Successfully</p>
-                 ) : popupStyle === "failure-popup" ? (
-                <p>One of the fields is incorrect</p>
-                ) : null}
+                 <h3>Contact Status</h3>
+                 <p>{popupMessage}</p>
             </div>
+    
         </div>  
 
     )    

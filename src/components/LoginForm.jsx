@@ -4,12 +4,25 @@ import "./LoginForm.css";
 import axios from "axios"; // Make sure you've installed axios using 'npm install axios'
 
 const LoginForm = ({ setLoggedInUser }) => {
+
   const [popupStyle, setPopupStyle] = useState("hide");
+  const [popupMessage, setPopupMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const showPopup = (message) => {
+    setPopupMessage(message);
+    setPopupStyle("login-popup");
+    setTimeout(() => hidePopup(), 3000);
+  };
+
+  const hidePopup = () => {
+    setPopupStyle("hide");
+    setPopupMessage("");
   };
 
   const handleLogin = async () => {
@@ -20,17 +33,17 @@ const LoginForm = ({ setLoggedInUser }) => {
     try {
       const response = await axios.post("/api/login", { username, password });
       if (response.data.success) {
-        alert("Login successful");
+        showPopup("Login successful");
         setLoggedInUser(username);
         localStorage.setItem('loggedInUser', JSON.stringify(username));
+        // Delay the navigation after showing the popup
+        setTimeout(() => {
         navigate('/');
-      } else {
-        setPopupStyle("login-popup");
-        setTimeout(() => setPopupStyle("hide"), 3000);
+      }, 3300);
       }
     } catch (error) {
       console.error("Error during login:", error);
-      alert("Login failed");
+      showPopup("Username or password are incorrect");
     }
   };
 
@@ -61,8 +74,8 @@ const LoginForm = ({ setLoggedInUser }) => {
       </p>
 
       <div className={popupStyle}>
-        <h3>Login Failed</h3>
-        <p>Username or password incorrect</p>
+        <h3>Login Status</h3>
+        <p>{popupMessage}</p>
       </div>
     </div>
   );
