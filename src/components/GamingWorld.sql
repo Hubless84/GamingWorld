@@ -33,7 +33,7 @@ CREATE TABLE Products (
     name VARCHAR(255) NOT NULL,
     price MONEY NOT NULL CHECK (price > '0'::MONEY),
     type VARCHAR(255) NOT NULL,
-    description TEXT
+    image_url TEXT
 );
 -- Credit card table
 CREATE TABLE CreditCards (
@@ -74,7 +74,7 @@ CREATE TABLE OrderProducts (
     order_uid UUID NOT NULL REFERENCES Orders(order_uid),
     product_uid UUID NOT NULL REFERENCES Products(product_uid),
     quantity INT NOT NULL CHECK (quantity > 0),
-    UNIQUE (order_uid, product_uid) -- This ensures that a product isn't listed multiple times in the same order
+    UNIQUE (order_uid, product_uid) 
 );
 -- Payment table
 CREATE TABLE Payments (
@@ -90,6 +90,35 @@ CREATE TABLE Contact (
     phone_number VARCHAR(10) NOT NULL,
     email VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE leaderboard (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    score INTEGER NOT NULL
+);
+CREATE TABLE IndividualScores (
+    score_id UUID PRIMARY KEY,
+    registered_user_uid UUID NOT NULL REFERENCES RegisteredUser(person_uid),
+    game_name VARCHAR(255) NOT NULL,
+    score INT NOT NULL CHECK (score >= 0),
+    -- Assuming scores are non-negative
+    submission_date DATE NOT NULL,
+    UNIQUE (registered_user_uid, game_name)
+);
+CREATE TABLE Fifa23Scores (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    score INT NOT NULL
+);
+CREATE TABLE ValorantScores (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    score INT NOT NULL
+);
+CREATE TABLE LolScores (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    score INT NOT NULL
 -- Inserting data into Person
 INSERT INTO Person (
         person_uid,
@@ -214,35 +243,46 @@ VALUES (
         '2023-06-15'
     );
 -- Inserting data into Products
-INSERT INTO Products (product_uid, name, price, type, description)
+INSERT INTO Products (product_uid, name, price, type,image_url)
 VALUES (
-        uuid_generate_v4(),
-        'Gaming Mouse',
-        50.00,
-        'Hardware',
-        'Ergonomic gaming mouse with RGB lighting'
+        '1',
+        'Hyperx Cloud 2 red Gaming Headset',
+        300.0,
+        'Headphones',
     ),
     (
         uuid_generate_v4(),
-        'Space Invaders T-Shirt',
-        20.00,
-        'Apparel',
-        'Cotton t-shirt with a Space Invaders print'
+        'Logitech G332 Gaming Headset',
+        200.0,
+        'Headphones',
     ),
     (
         uuid_generate_v4(),
-        'Gaming Keyboard',
-        70.00,
-        'Hardware',
-        'Mechanical gaming keyboard with customizable keys'
+        'Logitech G502 Proteus Spectrum',
+        329.0,
+        'Mouse',
     ),
     (
         uuid_generate_v4(),
-        'Pac-Man Mug',
-        10.00,
-        'Merchandise',
+        'Logitch G Pro Wireless',
+        354.0,
+        'Mouse',
         'A cool ceramic mug with Pac-Man design'
     ),
+    (
+        uuid_generate_v4(),
+        'Zelda Poster',
+        5.00,
+        'Merchandise',
+        'High quality print Zelda poster'
+    );
+    (
+        uuid_generate_v4(),
+        'Zelda Poster',
+        5.00,
+        'Merchandise',
+        'High quality print Zelda poster'
+    );
     (
         uuid_generate_v4(),
         'Zelda Poster',

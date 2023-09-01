@@ -3,7 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const fetch = require('node-fetch');
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid');
+
 
 const app = express();
 
@@ -27,18 +28,25 @@ const pool = new Pool({
 
 // // Riot API handling
 const riotBaseURL = 'https://euw1.api.riotgames.com';
-const riotApiKey = 'RGAPI-258569f6-dae6-4d97-b4ce-4b8e81d9cf6a';
+const riotApiKey = 'RGAPI-8088c485-d417-4abc-9e37-ce12c4a0ab99';
 
-  // LOL champion-rotation api
-
-  app.get('/api/lol-champion-rotations', async (req, res) => {
+  // 
+  app.get('/api/lol/leagues', async (req, res) => {
+    const { queue } = req.query;
+  
+    if (!queue) {
+      return res.status(400).json({ error: 'Queue parameter is required' });
+    }
+  
     try {
-      const apiURL = `${riotBaseURL}/lol/platform/v3/champion-rotations`;
+      const apiURL = `https://euw1.api.riotgames.com/lol/league/v4/entries/${queue}`;
+  
       const response = await fetch(apiURL, {
         headers: {
           'X-Riot-Token': riotApiKey,
         },
       });
+  
       const data = await response.json();
       res.json(data);
     } catch (error) {
@@ -46,6 +54,8 @@ const riotApiKey = 'RGAPI-258569f6-dae6-4d97-b4ce-4b8e81d9cf6a';
       res.status(500).json({ error: 'An error occurred' });
     }
   });
+  
+
 
   // LOL Summoner-v4 API (LolMain)
   app.get('/api/lol/summoner', async (req, res) => {
@@ -55,7 +65,7 @@ const riotApiKey = 'RGAPI-258569f6-dae6-4d97-b4ce-4b8e81d9cf6a';
         
         const response = await fetch(apiURL, {
             headers: {
-                'X-Riot-Token': riotApiKey, 
+                'X-Riot-Token': riotApiKey, // Replace with your Riot API key
             },
         });
         
@@ -68,6 +78,7 @@ const riotApiKey = 'RGAPI-258569f6-dae6-4d97-b4ce-4b8e81d9cf6a';
 });
 
 
+
 app.post('/api/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -76,9 +87,15 @@ app.post('/api/signup', async (req, res) => {
       return res.status(400).json({ message: 'Please fill in all fields' });
     }
 
+    const person_uid = uuidv4(); // Generate a new UUID for the person
+
     // Insert user into the RegisteredUser table
-    const query = 'INSERT INTO RegisteredUser (person_uid, Username, Password, RegistrationDate,email) VALUES (uuid_generate_v4(), $1, $2, NOW(),$3)';
-    await pool.query(query, [username, password,email]);
+    const registeredUserQuery = 'INSERT INTO RegisteredUser (person_uid, Username, Password, RegistrationDate) VALUES ($1, $2, $3, NOW())';
+    await pool.query(registeredUserQuery, [person_uid, username, password]);
+
+    // Insert user into the Person table
+    const personQuery = 'INSERT INTO Person (person_uid, name, email, registration_status) VALUES ($1, $2, $3, $4)';
+    await pool.query(personQuery, [person_uid, username, email, 'Registered']);
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
@@ -86,6 +103,7 @@ app.post('/api/signup', async (req, res) => {
     res.status(500).json({ message: 'An error occurred' });
   }
 });
+
 
 
 // Checking for user login credentials
@@ -105,6 +123,84 @@ app.post('/api/login', async (req, res) => {
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).json({ success: false, message: 'An error occurred' });
+  }
+});
+// Fetch leaderboard data
+app.get('/api/leaderboard', async (req, res) => {
+  try {
+    const leaderboardData = await pool.query('SELECT * FROM leaderboard ORDER BY score DESC');
+    res.json(leaderboardData.rows);
+  } catch (error) {
+    console.error('Error fetching leaderboard data', error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
+
+// Submit score for a game
+app.post('/api/submit-score', async (req, res) => {
+  const { registered_user_uid, game_name, score } = req.body;
+
+  if (!registered_user_uid || !game_name || !score) {
+    return res.status(400).json({ error: 'Missing required parameters' });
+  }
+
+  try {
+    const query = `
+      INSERT INTO IndividualScores (score_id, registered_user_uid, game_name, score, submission_date)
+      VALUES (uuid_generate_v4(), $1, $2, $3, CURRENT_DATE)
+      RETURNING *`;
+      
+    const values = [registered_user_uid, game_name, score];
+    const result = await pool.query(query, values);
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error submitting score', error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
+
+// Handle game-specific score submissions
+app.post('/api/game/score', async (req, res) => {
+  const { registered_user_uid, game_name, score } = req.body;
+
+  if (!registered_user_uid || !game_name || !score) {
+    return res.status(400).json({ error: 'Missing required parameters' });
+  }
+
+  try {
+    // Check if the provided registered_user_uid exists in the RegisteredUser table
+    const userQuery = 'SELECT person_uid FROM RegisteredUser WHERE person_uid = $1';
+    const userValues = [registered_user_uid];
+    const userResult = await pool.query(userQuery, userValues);
+
+    if (userResult.rows.length === 0) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    // Use the appropriate logic for each game
+    let table_name;
+    switch (game_name) {
+      case 'fifa23':
+        table_name = 'Fifa23Scores';
+        break;
+      case 'valorant':
+        table_name = 'ValorantScores';
+        break;
+      case 'lol':
+        table_name = 'LeagueOfLegendsScores';
+        break;
+      default:
+        return res.status(400).json({ error: 'Invalid game name' });
+    }
+
+    const insertQuery = `INSERT INTO ${table_name} (registered_user_uid, score) VALUES ($1, $2)`;
+    await pool.query(insertQuery, [registered_user_uid, score]);
+
+    res.status(201).json({ message: 'Score submitted successfully' });
+  } catch (error) {
+    console.error('Error submitting score', error);
+    res.status(500).json({ error: 'An error occurred' });
   }
 });
 
