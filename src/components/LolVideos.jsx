@@ -2,14 +2,14 @@ import React from 'react';
 import './LolVideos.css';
 
 const videoIds = [
-  'VIDEO_ID_1',
-  'VIDEO_ID_2',
-  'VIDEO_ID_3',
-  'VIDEO_ID_4',
-  'VIDEO_ID_5',
-  'VIDEO_ID_6',
-  'VIDEO_ID_7',
-  'VIDEO_ID_8',
+  'UOxkGD8qRB4?si=Nz4zQ4SDqr9DLb5k',
+  'bzVTONHA5h4?si=Ve-2if_Veljb-nEW',
+  'rtfS6PQEot0?si=_ADnkMR8bYDmh3wJ',
+  'cJT5d5Ue3ao?si=YPsbVulm_2KYQo0o',
+  'nYDLEZvuiqQ?si=-5txHZ0MoZpeInwF',
+  't7R6KDE0ejs?si=GC5g3_MRCtk7lInD',
+  'nYDLEZvuiqQ?si=-5txHZ0MoZpeInwF',
+  'b-krYWQMU8I?si=PAsBYKRSLFURl_Ua',
 ];
 
 const LolVideos = () => {
