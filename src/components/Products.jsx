@@ -18,7 +18,7 @@ const Products = ({ onDataFetched }) => {
       });
   }, [onDataFetched]);
 
-  return null; // This component doesn't render any UI
+  return null; 
 };
 export default Products;
 
