@@ -70,11 +70,6 @@ const riotApiKey = 'RGAPI-230fe77d-f4e1-424f-a14f-5e0cf70dcfb9';
   }); 
    
 
-  
-   
-  
-
-
   // LOL Summoner-v4 API (LolMain)
   app.get('/api/lol/summoner', async (req, res) => {
     try {
@@ -94,7 +89,6 @@ const riotApiKey = 'RGAPI-230fe77d-f4e1-424f-a14f-5e0cf70dcfb9';
         res.status(500).json({ error: 'An error occurred' });
     }
 });
-
 
 
 app.post('/api/signup', async (req, res) => {
@@ -181,8 +175,19 @@ app.post('/api/add-contact', async (req, res) => {
   }
 });
 
+app.get('/api/products', async (req, res) => {
+  try {
+    // Query the database to fetch the products
+    const productsQuery = 'SELECT * FROM Products';
+    const productsResult = await pool.query(productsQuery);
 
-
+    // Send the products as JSON response
+    res.json(productsResult.rows);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
 
 
 

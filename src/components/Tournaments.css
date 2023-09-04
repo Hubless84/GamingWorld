@@ -1,10 +1,4 @@
-.navbar {
-    display: flex;
-    justify-content: space-around;
-    background-color: #333;
-    padding: 20px;
-  }
-  
+ 
   .tournamens-container {
     display: flex;
     flex-wrap: wrap;
@@ -14,7 +8,7 @@
   
   
   .section {
-    flex-basis: 50%; /* Four sections will cover 25% of the width each */
+    flex-basis: 70%;
     height: 277px;
     background-size: cover;
     background-position: center;
@@ -27,18 +21,13 @@
   
   /* Add background images for each section */
   .section:nth-child(1) {
-    background-image: url('../images/HomePage/Fifa23.jpeg');
+    background-image: url('../images/HomePage/Lol.jpeg');
   }
   
   .section:nth-child(2) {
     background-image: url('../images/HomePage/Dota2.jpeg');
   }
   
-  .section:nth-child(3) {
-    background-image: url('../images/HomePage/Lol.jpeg');
-  }
   
-  .section:nth-child(4) {
-    background-image: url('../images/HomePage/CSGO.png');
-  }
+  
   
