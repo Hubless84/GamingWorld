@@ -12,6 +12,25 @@ CREATE TABLE Person (
     UNIQUE (email),
     UNIQUE (phone_number)
 );
+-- Sub table: RegisteredUser
+CREATE TABLE RegisteredUser (
+    person_uid UUID PRIMARY KEY REFERENCES Person(person_uid),
+    Username VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    RegistrationDate DATE,
+    UNIQUE (Username)
+);
+CREATE TABLE Fifa23Scores (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    score INT NOT NULL
+);
+CREATE TABLE ValorantScores (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    score INT NOT NULL
+);
 -- Competitions table
 CREATE TABLE Competitions (
     competition_uid UUID PRIMARY KEY,
@@ -29,11 +48,11 @@ CREATE TABLE GameUpdates (
 );
 -- Product table
 CREATE TABLE Products (
-    product_uid UUID PRIMARY KEY,
+    product_id INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     price MONEY NOT NULL CHECK (price > '0'::MONEY),
     type VARCHAR(255) NOT NULL,
-    image_url TEXT
+    image TEXT
 );
 -- Credit card table
 CREATE TABLE CreditCards (
@@ -54,15 +73,6 @@ CREATE TABLE Orders (
 CREATE TABLE UnregisteredUser (
     person_uid UUID PRIMARY KEY REFERENCES Person(person_uid)
 );
--- Sub table: RegisteredUser
-CREATE TABLE RegisteredUser (
-    person_uid UUID PRIMARY KEY REFERENCES Person(person_uid),
-    Username VARCHAR(255) NOT NULL,
-    Password VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    RegistrationDate DATE,
-    UNIQUE (Username)
-);
 CREATE TABLE PersonCompetitions (
     person_competition_uid UUID PRIMARY KEY,
     person_uid UUID NOT NULL REFERENCES Person(person_uid),
@@ -74,7 +84,7 @@ CREATE TABLE OrderProducts (
     order_uid UUID NOT NULL REFERENCES Orders(order_uid),
     product_uid UUID NOT NULL REFERENCES Products(product_uid),
     quantity INT NOT NULL CHECK (quantity > 0),
-    UNIQUE (order_uid, product_uid) 
+    UNIQUE (order_uid, product_uid)
 );
 -- Payment table
 CREATE TABLE Payments (
@@ -90,7 +100,6 @@ CREATE TABLE Contact (
     phone_number VARCHAR(10) NOT NULL,
     email VARCHAR(255) NOT NULL
 );
-
 CREATE TABLE leaderboard (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
@@ -105,21 +114,7 @@ CREATE TABLE IndividualScores (
     submission_date DATE NOT NULL,
     UNIQUE (registered_user_uid, game_name)
 );
-CREATE TABLE Fifa23Scores (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INT NOT NULL
-);
-CREATE TABLE ValorantScores (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INT NOT NULL
-);
-CREATE TABLE LolScores (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INT NOT NULL
--- Inserting data into Person
+score INT NOT NULL -- Inserting data into Person
 INSERT INTO Person (
         person_uid,
         name,
@@ -243,7 +238,7 @@ VALUES (
         '2023-06-15'
     );
 -- Inserting data into Products
-INSERT INTO Products (product_uid, name, price, type,image_url)
+INSERT INTO Products (product_uid, name, price, type, image_url)
 VALUES (
         '1',
         'Hyperx Cloud 2 red Gaming Headset',
@@ -276,20 +271,20 @@ VALUES (
         'Merchandise',
         'High quality print Zelda poster'
     );
-    (
-        uuid_generate_v4(),
-        'Zelda Poster',
-        5.00,
-        'Merchandise',
-        'High quality print Zelda poster'
-    );
-    (
-        uuid_generate_v4(),
-        'Zelda Poster',
-        5.00,
-        'Merchandise',
-        'High quality print Zelda poster'
-    );
+(
+    uuid_generate_v4(),
+    'Zelda Poster',
+    5.00,
+    'Merchandise',
+    'High quality print Zelda poster'
+);
+(
+    uuid_generate_v4(),
+    'Zelda Poster',
+    5.00,
+    'Merchandise',
+    'High quality print Zelda poster'
+);
 -- Inserting data into CreditCards
 INSERT INTO CreditCards (card_number, validity, CVV, owner_id)
 VALUES (

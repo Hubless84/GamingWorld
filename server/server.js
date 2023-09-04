@@ -1,4 +1,5 @@
 const cors = require('cors');
+const axios = require('axios');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
@@ -26,34 +27,51 @@ const pool = new Pool({
 });
 
 
-// // Riot API handling
-const riotBaseURL = 'https://euw1.api.riotgames.com';
-const riotApiKey = 'RGAPI-8088c485-d417-4abc-9e37-ce12c4a0ab99';
+// Riot API handling
+const riotApiKey = 'RGAPI-230fe77d-f4e1-424f-a14f-5e0cf70dcfb9';
 
-  // 
-  app.get('/api/lol/leagues', async (req, res) => {
-    const { queue } = req.query;
-  
-    if (!queue) {
-      return res.status(400).json({ error: 'Queue parameter is required' });
-    }
-  
+  //getting 
+  function getPlayerPUUID(playerName){
+    return axios.get("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + playerName + "?api_key=" + riotApiKey)
+    .then(response => {
+      console.log(response.data); 
+      return response.data.puuid
+    }).catch(err => err);
+  }
+
+  app.get("/5pastgames", async (req, res) => {
     try {
-      const apiURL = `https://euw1.api.riotgames.com/lol/league/v4/entries/${queue}`;
+      const playerName = req.query.username;
   
-      const response = await fetch(apiURL, {
-        headers: {
-          'X-Riot-Token': riotApiKey,
-        },
-      });
+      // PUUID
+      const PUUID = await getPlayerPUUID(playerName);
+      const apiCall = "https://americas.api.riotgames.com" + "/lol/match/v5/matches/by-puuid/" + PUUID + "/ids" + "?api_key=" + riotApiKey;
   
-      const data = await response.json();
-      res.json(data);
+      // List of game ID strings
+      const gameIDs = await axios.get(apiCall)
+        .then(response => response.data)
+        .catch(err => err);
+  
+      var matchDataArray = [];
+      for (var i = 0; i < gameIDs.length - 15; i++) {
+        const matchID = gameIDs[i];
+        const matchData = await axios
+          .get("https://americas.api.riotgames.com" + "/lol/match/v5/matches/" + matchID + "?api_key=" + riotApiKey)
+          .then((response) => response.data)
+          .catch((err) => err);
+        matchDataArray.push(matchData);
+      }
+      // Save info as JSON, send to client side
+      res.json(matchDataArray);
     } catch (error) {
-      console.error('Error fetching data', error);
-      res.status(500).json({ error: 'An error occurred' });
+      console.error(error);
+      res.status(500).json({ error: "An error occurred." });
     }
-  });
+  }); 
+   
+
+  
+   
   
 
 
@@ -125,84 +143,7 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ success: false, message: 'An error occurred' });
   }
 });
-// Fetch leaderboard data
-app.get('/api/leaderboard', async (req, res) => {
-  try {
-    const leaderboardData = await pool.query('SELECT * FROM leaderboard ORDER BY score DESC');
-    res.json(leaderboardData.rows);
-  } catch (error) {
-    console.error('Error fetching leaderboard data', error);
-    res.status(500).json({ error: 'An error occurred' });
-  }
-});
 
-// Submit score for a game
-app.post('/api/submit-score', async (req, res) => {
-  const { registered_user_uid, game_name, score } = req.body;
-
-  if (!registered_user_uid || !game_name || !score) {
-    return res.status(400).json({ error: 'Missing required parameters' });
-  }
-
-  try {
-    const query = `
-      INSERT INTO IndividualScores (score_id, registered_user_uid, game_name, score, submission_date)
-      VALUES (uuid_generate_v4(), $1, $2, $3, CURRENT_DATE)
-      RETURNING *`;
-      
-    const values = [registered_user_uid, game_name, score];
-    const result = await pool.query(query, values);
-
-    res.json(result.rows[0]);
-  } catch (error) {
-    console.error('Error submitting score', error);
-    res.status(500).json({ error: 'An error occurred' });
-  }
-});
-
-// Handle game-specific score submissions
-app.post('/api/game/score', async (req, res) => {
-  const { registered_user_uid, game_name, score } = req.body;
-
-  if (!registered_user_uid || !game_name || !score) {
-    return res.status(400).json({ error: 'Missing required parameters' });
-  }
-
-  try {
-    // Check if the provided registered_user_uid exists in the RegisteredUser table
-    const userQuery = 'SELECT person_uid FROM RegisteredUser WHERE person_uid = $1';
-    const userValues = [registered_user_uid];
-    const userResult = await pool.query(userQuery, userValues);
-
-    if (userResult.rows.length === 0) {
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
-
-    // Use the appropriate logic for each game
-    let table_name;
-    switch (game_name) {
-      case 'fifa23':
-        table_name = 'Fifa23Scores';
-        break;
-      case 'valorant':
-        table_name = 'ValorantScores';
-        break;
-      case 'lol':
-        table_name = 'LeagueOfLegendsScores';
-        break;
-      default:
-        return res.status(400).json({ error: 'Invalid game name' });
-    }
-
-    const insertQuery = `INSERT INTO ${table_name} (registered_user_uid, score) VALUES ($1, $2)`;
-    await pool.query(insertQuery, [registered_user_uid, score]);
-
-    res.status(201).json({ message: 'Score submitted successfully' });
-  } catch (error) {
-    console.error('Error submitting score', error);
-    res.status(500).json({ error: 'An error occurred' });
-  }
-});
 
 // Adding a new endpoint to check if a user already exists
 app.get('/api/check-user', async (req, res) => {
@@ -239,6 +180,11 @@ app.post('/api/add-contact', async (req, res) => {
     res.status(500).json({ message: 'An error occurred' });
   }
 });
+
+
+
+
+
 
 // Start the server
 const port = process.env.PORT || 5000; 

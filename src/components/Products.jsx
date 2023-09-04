@@ -25,7 +25,7 @@ export const Products = [
     productName: "Hyperx Cloud 2 red Gaming Headset",
     price: 300.0,
     productImage: product1,
-    type: 'Headphones'
+    type: 'Headphones',
   },
   {
     id: 2,

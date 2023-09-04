@@ -7,7 +7,7 @@ function LolMain() {
     const [playerData, setPlayerData] = useState({});
 
     function searchForPlayer() {
-        const lowerCaseName = searchText.toLowerCase(); // Convert to lowercase
+        const lowerCaseName = searchText.toLowerCase(); 
         const APICallString = `/api/lol/summoner?name=${lowerCaseName}`;
         
         axios.get(APICallString)
@@ -22,7 +22,7 @@ function LolMain() {
     return (
         <div>
             <div className="mini-navbar">
-                <a href="#find-player">Find a Player</a>
+                <a href="./LolHistory">Game History</a>
                 <a href="./LolVideos">Videos</a>
                 <a href="./LolNews">Latest News</a>
             </div>

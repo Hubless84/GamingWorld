@@ -1,0 +1,54 @@
+/* LolHistory.css */
+.lol-leagues-container {
+    padding: 20px;
+  }
+  
+  .mini-navbar-2 {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2f3136;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #h1-league {
+    font-size: 24px;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+  }
+  
+  .queue-select {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .lol-league-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #7289da;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .lol-league-button:hover {
+    background-color: #5f73bc;
+  }
+  
+  .league-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .league-entry {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Add more styling as needed for the additional information */
+  
