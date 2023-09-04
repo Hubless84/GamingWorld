@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Products } from "./Products";
+import Products from "./Products";
 
 export const ShopContext = createContext(null);
 
@@ -18,7 +18,7 @@ export const ShopContextProvider = (props) => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = Products.find((product) => product.id === Number(item));
+        let itemInfo = Products.find((product) => product.product_id === Number(item));
         totalAmount += cartItems[item] * itemInfo.price;
       }
     }
@@ -27,8 +27,8 @@ export const ShopContextProvider = (props) => {
 
   const getTotalCartItemsCount = () => {
     let CartAmount = 0;
-    for(const item in cartItems){
-      CartAmount += cartItems[item]
+    for (const item in cartItems) {
+      CartAmount += cartItems[item];
     }
     return CartAmount;
   };
@@ -70,3 +70,4 @@ export const ShopContextProvider = (props) => {
     </ShopContext.Provider>
   );
 };
+

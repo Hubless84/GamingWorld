@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { Products } from "./Products";
+import Products  from "./Products";
 import { Product } from "./Product";
 import "./Store.css";
 import StoreFilter from "./StoreFilter";
 
 const Store = () => {
-
-  const [newProductList] = useState(Products);
   const [filterTextvalue, updateFilterText] = useState("all");
+  const [fetchedProducts, setFetchedProducts] = useState([]);
 
-  let filteredProductList = newProductList.filter((Product) => {
+  const handleDataFetched = (data) => {
+    setFetchedProducts(data);
+  };
+
+  let filteredProductList = fetchedProducts.filter((Product) => {
     if (filterTextvalue === "Gaming Mouses") {
       return Product.type === "Mouse";
     } else if (filterTextvalue === "Gaming Keyboards") {
@@ -43,6 +46,8 @@ const Store = () => {
           <Product data={product} key={product.id} />
         ))}
       </div>
+
+      <Products onDataFetched={handleDataFetched} />
     </div>
   );
 };
