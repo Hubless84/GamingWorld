@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShopContext } from "./Shop-Context";
-import Products from "./Products"; 
 import { CartItem } from "./Cart_item";
 import "./Cart.css";
 
 export const Cart = () => {
   const { cartItems, getTotalCartAmount, resetCart } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
+  const { products } = useContext(ShopContext); 
   const navigate = useNavigate();
 
   const handleContinuePurchase = () => {
@@ -20,15 +20,12 @@ export const Cart = () => {
         <h1>Your Cart Items</h1>
       </div>
       <div className="cart">
-        {/* Use the Products component to fetch and display products */}
-        <Products onDataFetched={(fetchedData) => {
-          fetchedData.map((Product) => {
-            if (cartItems[Product.product_id] !== 0) {
-              return <CartItem data={Product} />;
-            }
-            return null;
-          });
-        }} />
+        {products.map((product) => {
+          if (cartItems[product.product_id] !== 0) {
+              return <CartItem data={product} key={product.product_id} />;
+          }
+          return null; // Default return value when the condition is not met
+        })}
       </div>
 
       {totalAmount > 0 ? (

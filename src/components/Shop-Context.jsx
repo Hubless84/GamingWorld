@@ -1,24 +1,42 @@
-import { createContext, useState } from "react";
-import Products from "./Products";
+import { createContext, useState, useEffect } from "react";
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
-  let cart = {};
-  for (let i = 1; i < Products.length + 1; i++) {
-    cart[i] = 0;
-  }
-  return cart;
-};
-
 export const ShopContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState(getDefaultCart());
+
+  // Define getDefaultCart using products after it's initialized
+  const getDefaultCart = () => {
+    let cart = {};
+    for (let i = 1; i < products.length + 1; i++) {
+      cart[i] = 0;
+    }
+    return cart;
+  };
+
+  const [cartItems, setCartItems] = useState({});
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Fetch product data when the component mounts
+    fetch("/api/products")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched products:", data);
+        // Update the products state with the fetched data
+        setProducts(data);
+         // Initialize the cart with the fetched products
+         setCartItems(getDefaultCart());
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  },[]);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = Products.find((product) => product.product_id === Number(item));
+        let itemInfo = products.find((product) => product.product_id === Number(item));
         totalAmount += cartItems[item] * itemInfo.price;
       }
     }
@@ -62,6 +80,7 @@ export const ShopContextProvider = (props) => {
     getTotalCartItemsCount,
     resetCart,
     payMent,
+    products,
   };
 
   return (
@@ -70,4 +89,3 @@ export const ShopContextProvider = (props) => {
     </ShopContext.Provider>
   );
 };
-

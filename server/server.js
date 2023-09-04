@@ -178,7 +178,7 @@ app.post('/api/add-contact', async (req, res) => {
 app.get('/api/products', async (req, res) => {
   try {
     // Query the database to fetch the products
-    const productsQuery = 'SELECT * FROM Products';
+    const productsQuery = 'SELECT * FROM products';
     const productsResult = await pool.query(productsQuery);
 
     // Send the products as JSON response

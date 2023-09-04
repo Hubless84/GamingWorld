@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react";
+/*import { useEffect } from "react";
 
 const Products = ({ onDataFetched }) => {
-  const [Products, setProducts] = useState([]);
-
-
+  
   useEffect(() => {
     // Make a GET request to fetch product data from your database API endpoint
     fetch("/api/products")
       .then((response) => response.json())
       .then((data) => {
-        setProducts(data);
         // Pass the fetched data to a callback function
         onDataFetched(data);
       })
@@ -18,8 +15,8 @@ const Products = ({ onDataFetched }) => {
       });
   }, [onDataFetched]);
 
-  return null; 
+  // No need to return anything since this component doesn't render anything in the DOM
+  return null;
 };
-export default Products;
 
-
+export default Products;*/

@@ -25,11 +25,12 @@
   .product img {
     max-width: 100%;
     width: 100px;
-    margin-top: 8px;
+    margin-top: 20px;
   }
   
   .product .description {
     text-align: center;
+    margin-top: 10px;
   }
   
   .product:hover {
@@ -45,6 +46,7 @@
     border-radius: 15px;
     transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
+    margin-top: 20px;
   }
   
   .addToCartBttn:hover {

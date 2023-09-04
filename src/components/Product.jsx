@@ -7,6 +7,7 @@ export const Product = (props) => {
 
   const cartItemCount = cartItems[product_id];
 
+
   return (
     <div className="product">
       <img src={require(`${image_path}`)} alt={"img"} />

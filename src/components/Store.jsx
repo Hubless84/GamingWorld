@@ -1,30 +1,26 @@
-import React, { useState } from "react";
-import Products  from "./Products";
+import React, { useState, useContext } from "react";
+import { ShopContext } from "./Shop-Context";
+import StoreFilter from "./StoreFilter";
 import { Product } from "./Product";
 import "./Store.css";
-import StoreFilter from "./StoreFilter";
 
 const Store = () => {
   const [filterTextvalue, updateFilterText] = useState("all");
-  const [fetchedProducts, setFetchedProducts] = useState([]);
+  const { products } = useContext(ShopContext); 
 
-  const handleDataFetched = (data) => {
-    setFetchedProducts(data);
-  };
-
-  let filteredProductList = fetchedProducts.filter((Product) => {
+  let filteredProductList = products.filter((product) => {
     if (filterTextvalue === "Gaming Mouses") {
-      return Product.type === "Mouse";
+      return product.type === "Mouse";
     } else if (filterTextvalue === "Gaming Keyboards") {
-      return Product.type === "Keyboard";
+      return product.type === "Keyboard";
     } else if (filterTextvalue === "Gaming Headphones") {
-      return Product.type === "Headphones";
+      return product.type === "Headphones";
     } else if (filterTextvalue === "Gaming pads") {
-      return Product.type === "Gamepad";
+      return product.type === "Gamepad";
     } else if (filterTextvalue === "Gaming Controllers") {
-      return Product.type === "GameController";
+      return product.type === "GameController";
     } else {
-      return Product;
+      return true;
     }
   });
 
@@ -42,12 +38,10 @@ const Store = () => {
       </div>
 
       <div className="products">
-          {filteredProductList.map((product) => (
-          <Product data={product} key={product.id} />
+        {filteredProductList.map((product) => (
+          <Product data={product} key={product.product_id} />
         ))}
       </div>
-
-      <Products onDataFetched={handleDataFetched} />
     </div>
   );
 };

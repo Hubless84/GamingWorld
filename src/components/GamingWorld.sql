@@ -48,7 +48,7 @@ CREATE TABLE GameUpdates (
 );
 -- Product table
 CREATE TABLE Products (
-    product_id int PRIMARY KEY,
+    product_id INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     price MONEY NOT NULL CHECK (price > '0'::MONEY),
     type VARCHAR(255) NOT NULL,
@@ -255,7 +255,7 @@ VALUES
   (12, 'Logitech G603 Lightspeed WIRELES Mouse', 230.0, 'Mouse', './products/product12.jpg'),
   (13, 'Corsair K55 RGB PRO', 174.0, 'Keyboard', './products/product13.jpg'),
   (14, 'Corsair K70 RGB TKL CHAMPION with OPX SWITCHES', 470.0, 'Keyboard', './products/product14.jpg'),
-  (15, 'Dragon RGB GPDRA-K18', 119.0, 'Keyboard', 'product15.jpg'),
+  (15, 'Dragon RGB GPDRA-K18', 119.0, 'Keyboard', './products/product15.jpg'),
   (16, 'Logitech G Pro Tenkeyless GX Blue Switch', 670.0, 'Keyboard', './products/product16.jpg'),
   (17, 'Roccat Magma Membrane Gaming Keyboard RGB', 210.0, 'Keyboard', './products/product17.jpg'),
   (18, 'SteelSeries rival 650 Gaming Mouse', 423.0, 'Mouse', './products/product18.png'),

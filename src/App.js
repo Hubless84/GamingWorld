@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import ContactForm from "./components/ContactForm";
 import Store from "./components/Store";
-import ValorantMain from "./components/ValorantMain";
 import BeAPro from "./components/BeAPro";
 import LolMain from "./components/LolMain";
 import Leaderboard from './components/Leaderboard';
@@ -36,7 +35,6 @@ function App() {
       setLoggedInUser(JSON.parse(storedUser));
     }
   }, []);
-  
 
 
   return (
