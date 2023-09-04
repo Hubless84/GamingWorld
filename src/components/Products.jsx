@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const Products = ({ onDataFetched }) => {
   const [Products, setProducts] = useState([]);
 
+
   useEffect(() => {
     // Make a GET request to fetch product data from your database API endpoint
     fetch("/api/products")

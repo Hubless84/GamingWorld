@@ -12,6 +12,25 @@ CREATE TABLE Person (
     UNIQUE (email),
     UNIQUE (phone_number)
 );
+-- Sub table: RegisteredUser
+CREATE TABLE RegisteredUser (
+    person_uid UUID PRIMARY KEY REFERENCES Person(person_uid),
+    Username VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    RegistrationDate DATE,
+    UNIQUE (Username)
+);
+CREATE TABLE Fifa23Scores (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    score INT NOT NULL
+);
+CREATE TABLE ValorantScores (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    score INT NOT NULL
+);
 -- Competitions table
 CREATE TABLE Competitions (
     competition_uid UUID PRIMARY KEY,
@@ -29,7 +48,7 @@ CREATE TABLE GameUpdates (
 );
 -- Product table
 CREATE TABLE Products (
-    product_id int PRIMARY KEY,
+    product_uid UUID PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     price MONEY NOT NULL CHECK (price > '0'::MONEY),
     type VARCHAR(255) NOT NULL,
@@ -54,20 +73,18 @@ CREATE TABLE Orders (
 CREATE TABLE UnregisteredUser (
     person_uid UUID PRIMARY KEY REFERENCES Person(person_uid)
 );
--- Sub table: RegisteredUser
-CREATE TABLE RegisteredUser (
-    person_uid UUID PRIMARY KEY REFERENCES Person(person_uid),
-    Username VARCHAR(255) NOT NULL,
-    Password VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    RegistrationDate DATE,
-    UNIQUE (Username)
-);
 CREATE TABLE PersonCompetitions (
     person_competition_uid UUID PRIMARY KEY,
     person_uid UUID NOT NULL REFERENCES Person(person_uid),
     competition_uid UUID NOT NULL REFERENCES Competitions(competition_uid),
     UNIQUE (person_uid, competition_uid) -- This ensures that a person can't be registered in the same competition more than once
+);
+CREATE TABLE OrderProducts (
+    order_product_uid UUID PRIMARY KEY,
+    order_uid UUID NOT NULL REFERENCES Orders(order_uid),
+    product_uid UUID NOT NULL REFERENCES Products(product_uid),
+    quantity INT NOT NULL CHECK (quantity > 0),
+    UNIQUE (order_uid, product_uid) 
 );
 -- Payment table
 CREATE TABLE Payments (
@@ -83,7 +100,6 @@ CREATE TABLE Contact (
     phone_number VARCHAR(10) NOT NULL,
     email VARCHAR(255) NOT NULL
 );
-
 CREATE TABLE leaderboard (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
@@ -98,21 +114,7 @@ CREATE TABLE IndividualScores (
     submission_date DATE NOT NULL,
     UNIQUE (registered_user_uid, game_name)
 );
-CREATE TABLE Fifa23Scores (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INT NOT NULL
-);
-CREATE TABLE ValorantScores (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INT NOT NULL
-);
-CREATE TABLE LolScores (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INT NOT NULL
--- Inserting data into Person
+score INT NOT NULL -- Inserting data into Person
 INSERT INTO Person (
         person_uid,
         name,
@@ -236,28 +238,53 @@ VALUES (
         '2023-06-15'
     );
 -- Inserting data into Products
-INSERT INTO Products (product_id, name, price, type, image)
-VALUES
-  (1, 'Hyperx Cloud 2 red Gaming Headset', 300.0, 'Headphones', './products/product1.jpg'),
-  (2, 'Logitech G332 Gaming Headset', 200.0, 'Headphones', './products/product2.jpg'),
-  (3, 'Logitech G502 Proteus Spectrum', 329.0, 'Mouse', './products/product3.jpg'),
-  (4, 'Logitech G Pro Wireless', 354.0, 'Mouse', './products/product4.png'),
-  (5, 'Razer Firefly Hard V2 RGB Gaming Mouse Pad', 39.99, 'Gamepad', './products/product5.jpg'),
-  (6, 'XBox Elite Series 2', 399.0, 'GameController', './products/product6.jpeg'),
-  (7, 'SteelSeries Apex 7 Red Switch', 350.0, 'Keyboard', './products/product7.jpg'),
-  (8, 'Logitech G513 Mechanical Gaming Keyboard', 530.0, 'Keyboard', './products/product8.jpg'),
-  (9, 'Logitech G903 Lightspeed Hero', 294.0, 'Mouse', './products/product9.jpg'),
-  (10, 'Lenovo Legion M600 RGB', 170.0, 'Mouse', './products/product10.jpg'),
-  (11, 'Corsair M65 RGB ULTRA WIRELES Tunable FPS', 470.0, 'Mouse', './products/product11.jpg'),
-  (12, 'Logitech G603 Lightspeed WIRELES Mouse', 230.0, 'Mouse', './products/product12.jpg'),
-  (13, 'Corsair K55 RGB PRO', 174.0, 'Keyboard', './products/product13.jpg'),
-  (14, 'Corsair K70 RGB TKL CHAMPION with OPX SWITCHES', 470.0, 'Keyboard', './products/product14.jpg'),
-  (15, 'Dragon RGB GPDRA-K18', 119.0, 'Keyboard', 'product15.jpg'),
-  (16, 'Logitech G Pro Tenkeyless GX Blue Switch', 670.0, 'Keyboard', './products/product16.jpg'),
-  (17, 'Roccat Magma Membrane Gaming Keyboard RGB', 210.0, 'Keyboard', './products/product17.jpg'),
-  (18, 'SteelSeries rival 650 Gaming Mouse', 423.0, 'Mouse', './products/product18.png'),
-  (19, 'SteelSeries Arctis Pro Gaming Headset', 730.0, 'Headphones', './products/product19.jpg'),
-  (20, 'Corsair MM350 Champion Series Mouse - Medium Pad', 81.0, 'Gamepad', './products/product20.jpg')
+INSERT INTO Products (product_uid, name, price, type,image_url)
+VALUES (
+        '1',
+        'Hyperx Cloud 2 red Gaming Headset',
+        300.0,
+        'Headphones',
+    ),
+    (
+        uuid_generate_v4(),
+        'Logitech G332 Gaming Headset',
+        200.0,
+        'Headphones',
+    ),
+    (
+        uuid_generate_v4(),
+        'Logitech G502 Proteus Spectrum',
+        329.0,
+        'Mouse',
+    ),
+    (
+        uuid_generate_v4(),
+        'Logitch G Pro Wireless',
+        354.0,
+        'Mouse',
+        'A cool ceramic mug with Pac-Man design'
+    ),
+    (
+        uuid_generate_v4(),
+        'Zelda Poster',
+        5.00,
+        'Merchandise',
+        'High quality print Zelda poster'
+    );
+    (
+        uuid_generate_v4(),
+        'Zelda Poster',
+        5.00,
+        'Merchandise',
+        'High quality print Zelda poster'
+    );
+    (
+        uuid_generate_v4(),
+        'Zelda Poster',
+        5.00,
+        'Merchandise',
+        'High quality print Zelda poster'
+    );
 -- Inserting data into CreditCards
 INSERT INTO CreditCards (card_number, validity, CVV, owner_id)
 VALUES (
