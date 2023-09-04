@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import { ShopContext } from "./Shop-Context";
 
 export const Product = (props) => {
-  const { product_id, name, price, image } = props.data;
+  const { product_id, name, price, image_path } = props.data;
   const { addToCart, cartItems } = useContext(ShopContext);
 
   const cartItemCount = cartItems[product_id];
 
   return (
     <div className="product">
-      <img src={image} alt={`Product: ${name}`} />
+      <img src={require(`${image_path}`)} alt={"img"} />
       <div className="description">
         <p>
           <b>{name}</b>

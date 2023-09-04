@@ -42,7 +42,7 @@ const Store = () => {
       </div>
 
       <div className="products">
-        {filteredProductList.map((product) => (
+          {filteredProductList.map((product) => (
           <Product data={product} key={product.id} />
         ))}
       </div>

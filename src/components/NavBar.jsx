@@ -11,7 +11,6 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
   const handleLogout = () => {
     localStorage.removeItem('loggedInUser');
     setLoggedInUser(null);
-    // You might also want to redirect to a logout page or the homepage
   };
 
   return (

@@ -52,7 +52,7 @@ CREATE TABLE Products (
     name VARCHAR(255) NOT NULL,
     price MONEY NOT NULL CHECK (price > '0'::MONEY),
     type VARCHAR(255) NOT NULL,
-    image TEXT
+    image_path TEXT
 );
 -- Credit card table
 CREATE TABLE CreditCards (
@@ -239,7 +239,7 @@ VALUES (
     );
     
 -- Inserting data into Products
-INSERT INTO Products (product_id, name, price, type, image)
+INSERT INTO Products (product_id, name, price, type, image_path)
 VALUES
   (1, 'Hyperx Cloud 2 red Gaming Headset', 300.0, 'Headphones', './products/product1.jpg'),
   (2, 'Logitech G332 Gaming Headset', 200.0, 'Headphones', './products/product2.jpg'),
