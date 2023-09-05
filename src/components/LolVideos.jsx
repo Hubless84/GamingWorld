@@ -8,13 +8,16 @@ const videoIds = [
   'cJT5d5Ue3ao?si=YPsbVulm_2KYQo0o',
   'nYDLEZvuiqQ?si=-5txHZ0MoZpeInwF',
   't7R6KDE0ejs?si=GC5g3_MRCtk7lInD',
-  'nYDLEZvuiqQ?si=-5txHZ0MoZpeInwF',
-  'b-krYWQMU8I?si=PAsBYKRSLFURl_Ua',
 ];
 
 const LolVideos = () => {
   return (
     <div className="lol-videos-container">
+      <div className="mini-navbar">
+          <a href="./LolPlayer">Find a Player</a>
+          <a href="./LolHistory">Game History</a>
+          <a href="./LolVideos">Videos</a>
+      </div>
       <div className='lol-videos-title'><h1>Most Popular League of Legends Videos</h1></div>
       <div className="video-grid">
         {videoIds.map((videoId, index) => (

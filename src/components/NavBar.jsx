@@ -31,7 +31,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
       </div>
       <ul className="nav-links">
         <li><Link to="/HomePage">Home</Link></li>
-        <li><Link to="/Tournaments">Tournaments</Link></li>
+        <li><Link to="/LolMain">League of Legends</Link></li>
         <li><Link to="/Store">Store</Link></li>
         <li>
           <div>

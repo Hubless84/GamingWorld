@@ -1,18 +1,33 @@
-/* Styling for the game history container */
-.game-history-container {
+.mini-navbar {
   display: flex;
+  justify-content: space-around;
+  background-color: #333;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.mini-navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.mini-navbar a:hover {
+  text-decoration: underline;
+}
+
+.game-history-container {
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-/* Styling for the history title */
+
 .history-title {
   font-size: 24px;
   margin-bottom: 16px;
 }
 
-/* Styling for the history input field */
+
 .history-input {
   padding: 8px;
   border: 1px solid #ccc;
@@ -21,7 +36,6 @@
   font-size: 14px;
 }
 
-/* Styling for the history button */
 .history-button {
   padding: 8px 16px;
   background-color: #007bff;
@@ -32,14 +46,14 @@
   font-size: 14px;
 }
 
-/* Styling for the game list */
+
 .game-list {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Styling for each game card */
+
 .game-card {
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -47,20 +61,20 @@
   margin: 16px;
 }
 
-/* Styling for the data label */
+
 .data-label {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 12px;
 }
 
-/* Styling for participant info */
+
 .participant-info {
   font-size: 14px;
   margin: 6px 0;
 }
 
-/* Styling for the participant list */
+
 .participant-list {
   display: flex;
   flex-direction: column;

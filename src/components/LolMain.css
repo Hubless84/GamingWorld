@@ -1,74 +1,152 @@
-/* LolMain.css */
-.mini-navbar {
-  display: flex;
-  justify-content: space-around;
-  background-color: #333;
-  padding: 10px;
-}
 
-.mini-navbar a {
-  color: white;
-  text-decoration: none;
-}
-
-.mini-navbar a:hover {
-  text-decoration: underline;
-}
-
-.lol-h1 {
+.league-component {
+  background-color: #121212; 
+  color: #fff; 
+  border: 2px solid #2a2a2a; 
+  border-radius: 10px;
+  padding: 20px;
   text-align: center;
-  margin-top: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6); /* Shadow effect */
 }
 
-.lol-h2 {
-  text-align: center;
-}
 
-.lol-img {
-  margin-left: 555px;
-  margin-top: 30px;
-}
-
-.lol-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.lol-button {
+.video-placeholder {
   display: block;
-  margin: 10px auto;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.4);
+}
+
+.video-placeholder {
+  position:relative;
+  width: 70%;
+  height: 400px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+.video-placeholder iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.headlines {
+  display: flex;
+  flex-direction: column;
+}
+
+.headlines h2 {
+  margin: 10px 0;
+  font-family: 'Arial', sans-serif; 
+  font-size: 24px; 
+  color: #ffcc00; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  border-bottom: 1px solid #333; 
+  padding-bottom: 5px;
+  letter-spacing: 1px; 
+  text-transform: uppercase; 
+  font-weight: bold;
+  text-align: center; 
+}
+
+.featured-champion {
+  
+  padding: 20px;
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+
+.featured-champion h2 {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #e91e63; /* League of Legends red */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(32, 60, 79, 0.6);
+  background-image: linear-gradient(to right, #e91e63, #ff9800); /* Red to orange gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+
+  
+
+.featured-champion h3 {
+  font-size: 32px;
+  margin: 10px 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.featured-champion p {
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 12px 0;
+  color: #f00;
+  font-weight: bold;
+  position: relative;
+  animation: flames 1s infinite alternate;
+}
+
+@keyframes flames {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+  }
+}
+
+
+.featured-champion a {
+  display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  background-color: #e91e63;
+  color: #fff;
+  text-decoration: none;
   border-radius: 5px;
-  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  border: 2px solid #fff; 
+  margin-top: 35px;
 }
 
-.lol-button:hover {
-  background-color: #0056b3;
+.featured-champion a:hover {
+  background-color: #ffc107; /* League of Legends yellow on hover */
+  border-color: #e91e63; /* Maintain the red border on hover */
 }
 
-.player-info {
-  text-align: center;
-  margin-top: 20px;
+
+.featured-champion hr {
+  border: none;
+  height: 4px;
+  background: linear-gradient(to right, #284253, #1e3c4f);
+  margin: 20px auto;
+  margin-bottom: 50px;
+  opacity: 0.7;
+  width: 58%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.player-info img {
-  max-width: 100px;
-  border-radius: 50%;
-  margin-top: 10px;
-}
 
-.player-info h2 {
-  margin-top: 10px;
-}
 
-.lol-error-message {
-  color: red;
-  text-align: center;
-  margin-top: 20px;
-}
