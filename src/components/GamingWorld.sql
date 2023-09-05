@@ -1,7 +1,18 @@
 -- Make Sure you have uuid extension:
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Main table:  
+-- Main table: Person
+CREATE TABLE Person (
+    person_uid UUID NOT NULL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    registration_status VARCHAR(15) NOT NULL CHECK (
+        registration_status IN ('Unregistered', 'Registered')
+    ),
+    UNIQUE (email)
+);
+
+-- Sub table: RegisteredUser
 CREATE TABLE RegisteredUser (
     person_uid UUID PRIMARY KEY 
     Username VARCHAR(255) NOT NULL,
@@ -21,14 +32,7 @@ CREATE TABLE ValorantScores (
     score INT NOT NULL
 );
 
--- Game updates table
-CREATE TABLE GameUpdates (
-    update_uuid UUID PRIMARY KEY,
-    game_name VARCHAR(255) NOT NULL,
-    description TEXT,
-    release_date DATE NOT NULL
-);
--- Products table
+-- Product table
 CREATE TABLE Products (
     product_id INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -50,7 +54,6 @@ CREATE TABLE Orders (
     validity DATE
 );
 
--- Contact table
 CREATE TABLE Contact (
     contact_uid uuid PRIMARY KEY,
     first_name VARCHAR(15),
@@ -97,10 +100,16 @@ VALUES
   (19, 'SteelSeries Arctis Pro Gaming Headset', 730.0, 'Headphones', './products/product19.jpg'),
   (20, 'Corsair MM350 Champion Series Mouse - Medium Pad', 81.0, 'Gamepad', './products/product20.jpg')
 
---inserting data into RegisteredUser table
-INSERT INTO RegisteredUser ( Username, Password,email, RegistrationDate)
+
+-- Insert data into RegisteredUser table
+INSERT INTO RegisteredUser (person_uid, Username, Password, email, RegistrationDate)
 VALUES 
-    ('or12','12345','or12@gmail.com','2023-08-01'),
-    ('erik','12345','erik@gmail.com','2023-08-05')
-        
+    (uuid_generate_v4(), 'or12', '12345', 'or12@gmail.com', '2023-08-01'),
+    (uuid_generate_v4(), 'erik', '12345', 'erik@gmail.com', '2023-08-05');
+
+-- Insert data into Person table
+INSERT INTO Person (person_uid, name, email, registration_status)
+VALUES 
+    (uuid_generate_v4(), 'or12', 'or12@gmail.com', 'Registered'),
+    (uuid_generate_v4(), 'erik', 'erik@gmail.com', 'Registered');
 
