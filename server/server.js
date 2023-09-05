@@ -192,7 +192,7 @@ app.get('/api/products', async (req, res) => {
 
 //post request to insert details
 app.post('/api/payment-success', async (req, res) => {
-  const { email, city, address, product_name, price, cardNumber, cardvalidity} = req.body;
+  const { email, city, address, product_name, price, cardNumber, cardValidity} = req.body;
   try {
 
     // Insert payment details into the Orders table
@@ -200,7 +200,7 @@ app.post('/api/payment-success', async (req, res) => {
       INSERT INTO Orders (order_uid, email, city, address, product_name, price, purchase_date, card_number, card_validity)
       VALUES ($1, $2, $3, $4, $5, $6, NOW(), $7, $8)
     `;
-    await pool.query(query, [uuidv4(), email, city, address, product_name, price, cardNumber, cardvalidity]);
+    await pool.query(query, [uuidv4(), email, city, address, product_name, price, cardNumber, cardValidity]);
 
     res.status(201).json({ message: 'Payment details inserted successfully' });
   } catch (error) {
