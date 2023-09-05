@@ -9,8 +9,8 @@ export const ShopContextProvider = (props) => {
   // Define getDefaultCart using products after it's initialized
   const getDefaultCart = () => {
     let cart = {};
-    for (let i = 1; i < products.length + 1; i++) {
-      cart[i] = 0;
+    for (const product of products) {
+      cart[product.product_id] = 0;
     }
     return cart;
   };
@@ -39,15 +39,23 @@ export const ShopContextProvider = (props) => {
   }, []);
   
   const getTotalCartAmount = () => {
+    console.log('cartItems:', cartItems);
     let totalAmount = 0;
+    // Loop through each item in cartItems
     for (const item in cartItems) {
+      // Check if the quantity is greater than 0
       if (cartItems[item] > 0) {
-        let itemInfo = products.find((product) => product.product_id === Number(item));
-        if (itemInfo) {
+        // Find the corresponding product using its product_id
+        const itemInfo = products.find((product) => product.product_id === Number(item));
+        
+        // Check if itemInfo is found and it has a valid price
+        if (itemInfo && typeof itemInfo.price === 'number') {
+          // Calculate and add the subtotal for this item to the totalAmount
           totalAmount += cartItems[item] * itemInfo.price;
         }
       }
     }
+    
     return totalAmount;
   };
 
@@ -89,11 +97,32 @@ export const ShopContextProvider = (props) => {
 
   const resetCart = () => {
     setCartItems(getDefaultCart(), () => {
+      localStorage.removeItem("cart")
+      
     });
   };
 
   const payMent = () => {
     setCartItems(getTotalCartAmount());
+  };
+
+  const getProductsInCart = () => {
+    const productsInCart = [];
+  
+    for (const itemId in cartItems) {
+      if (cartItems[itemId] > 0) {
+        const product = products.find((p) => p.product_id === Number(itemId));
+  
+        if (product) {
+          productsInCart.push({
+            ...product,
+            quantity: cartItems[itemId],
+          });
+        }
+      }
+    }
+  
+    return productsInCart;
   };
 
   const contextValue = {
@@ -106,6 +135,7 @@ export const ShopContextProvider = (props) => {
     resetCart,
     payMent,
     products,
+    getProductsInCart,
   };
 
   return (

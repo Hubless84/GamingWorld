@@ -17,16 +17,14 @@ import LolVideos from './components/LolVideos';
 import LolNews from './components/LolNews';
 import { ShopContextProvider } from "./components/Shop-Context";
 import Payment from './components/Payment';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 import {Cart} from './components/Cart';
 import "./App.css"
 import LolHistory from './components/LolHistory';
+import PaymentSuccess from './components/PaymentSuccess';
 
 
 function App() {
 
-  const stripePromise = loadStripe('YOUR_STRIPE_PUBLIC_KEY');
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
@@ -56,7 +54,8 @@ function App() {
               <Route path="/SignupForm" element={<SignupForm/>} />
               <Route path="/ContactForm" element={<ContactForm/>} />
               <Route path="/Cart" element={<Cart/>} />
-              <Route path="/Payment" element={<Elements stripe={stripePromise}><Payment /></Elements>} />
+              <Route path="/Payment" element={<Payment/>} />
+              <Route path="/PaymentSuccess" element={<PaymentSuccess/>} />
               <Route path="*" element={<ErrorPage/>} />
             </Routes>
         <Footer/>

@@ -11,7 +11,7 @@ export const Cart = () => {
   const navigate = useNavigate();
 
   const handleContinuePurchase = () => {
-    navigate("/Payment", { state: { totalAmount: totalAmount } });
+    navigate("/Payment", { state: { totalAmount: totalAmount, cartItems: cartItems } });
   };
 
   // Check if there are any items in the cart
