@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "./SignupForm.css";
 import axios from "axios"; 
 
 const SignupForm = () => {
   const [popupStyle, setPopupStyle] = useState("hide");
   const [popupMessage, setPopupMessage] = useState("");
+  const navigate = useNavigate();
 
   const showPopup = (message) => {
     setPopupMessage(message);
@@ -34,7 +35,10 @@ const SignupForm = () => {
       // If not exists, proceed with user registration
       await axios.post("/api/signup", { username, email, password });
       showPopup("User registered successfully");
-
+      setTimeout(() => {
+        navigate('/LoginForm');
+      }, 3300);
+      
       // Clear input fields after successful registration
       document.querySelector('[name="username"]').value = "";
       document.querySelector('[name="email"]').value = "";

@@ -102,8 +102,8 @@ app.post('/api/signup', async (req, res) => {
     const person_uid = uuidv4(); // Generate a new UUID for the person
 
     // Insert user into the RegisteredUser table
-    const registeredUserQuery = 'INSERT INTO RegisteredUser (person_uid, Username, Password, RegistrationDate) VALUES ($1, $2, $3, NOW())';
-    await pool.query(registeredUserQuery, [person_uid, username, password]);
+    const registeredUserQuery = 'INSERT INTO RegisteredUser (person_uid, Username, Password, RegistrationDate, email) VALUES ($1, $2, $3, NOW(), $4)';
+    await pool.query(registeredUserQuery, [person_uid, username, password,email]);
 
     // Insert user into the Person table
     const personQuery = 'INSERT INTO Person (person_uid, name, email, registration_status) VALUES ($1, $2, $3, $4)';
