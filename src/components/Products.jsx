@@ -7,6 +7,7 @@ const Products = ({ onDataFetched }) => {
     fetch("/api/products")
       .then((response) => response.json())
       .then((data) => {
+        console.log("Fetched products2:", data);
         // Pass the fetched data to a callback function
         onDataFetched(data);
       })

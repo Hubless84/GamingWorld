@@ -14,6 +14,9 @@ export const Cart = () => {
     navigate("/Payment", { state: { totalAmount: totalAmount } });
   };
 
+  // Check if there are any items in the cart
+  const isCartEmpty = Object.values(cartItems).every(quantity => quantity === 0);
+
   return (
     <div className="cart">
       <div>
@@ -24,11 +27,11 @@ export const Cart = () => {
           if (cartItems[product.product_id] !== 0) {
               return <CartItem data={product} key={product.product_id} />;
           }
-          return null; // Default return value when the condition is not met
+          return null;
         })}
       </div>
 
-      {totalAmount > 0 ? (
+      {!isCartEmpty ? (
         <>
           <div className="checkout">
             <p> Subtotal: ₪{totalAmount} </p>

@@ -3,6 +3,8 @@ import { createContext, useState, useEffect } from "react";
 export const ShopContext = createContext(null);
 
 export const ShopContextProvider = (props) => {
+  const [cartItems, setCartItems] = useState({});
+  const [products, setProducts] = useState([]);
 
   // Define getDefaultCart using products after it's initialized
   const getDefaultCart = () => {
@@ -13,9 +15,6 @@ export const ShopContextProvider = (props) => {
     return cart;
   };
 
-  const [cartItems, setCartItems] = useState({});
-  const [products, setProducts] = useState([]);
-
   useEffect(() => {
     // Fetch product data when the component mounts
     fetch("/api/products")
@@ -24,20 +23,29 @@ export const ShopContextProvider = (props) => {
         console.log("Fetched products:", data);
         // Update the products state with the fetched data
         setProducts(data);
-         // Initialize the cart with the fetched products
-         setCartItems(getDefaultCart());
+
+        // Load cart data from localStorage AFTER setting products
+        const storedCart = localStorage.getItem("cart");
+        if (storedCart) {
+          setCartItems(JSON.parse(storedCart));
+        } else {
+          // Initialize the cart with default values if not found in localStorage
+          setCartItems(getDefaultCart());
+        }
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
-  },[]);
-
+  }, []);
+  
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = products.find((product) => product.product_id === Number(item));
-        totalAmount += cartItems[item] * itemInfo.price;
+        if (itemInfo) {
+          totalAmount += cartItems[item] * itemInfo.price;
+        }
       }
     }
     return totalAmount;
@@ -52,11 +60,27 @@ export const ShopContextProvider = (props) => {
   };
 
   const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    // Update cartItems state
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: prev[itemId] + 1,
+    }));
+
+    // Update localStorage
+    const updatedCart = { ...cartItems, [itemId]: cartItems[itemId] + 1 };
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+    // Update cartItems state
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: prev[itemId] - 1,
+    }));
+
+    // Update localStorage
+    const updatedCart = { ...cartItems, [itemId]: cartItems[itemId] - 1 };
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const updateCartItemCount = (newAmount, itemId) => {
@@ -64,7 +88,8 @@ export const ShopContextProvider = (props) => {
   };
 
   const resetCart = () => {
-    setCartItems(getDefaultCart());
+    setCartItems(getDefaultCart(), () => {
+    });
   };
 
   const payMent = () => {

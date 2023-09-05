@@ -36,11 +36,10 @@ function App() {
     }
   }, []);
 
-
   return (
     <BrowserRouter>
       <ShopContextProvider>
-      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+        <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
             <Routes>
               <Route path="/" element ={<HomePage/>} />
               <Route path="/BeAPro" element ={<BeAPro/>} />
@@ -60,8 +59,8 @@ function App() {
               <Route path="/Payment" element={<Elements stripe={stripePromise}><Payment /></Elements>} />
               <Route path="*" element={<ErrorPage/>} />
             </Routes>
-          <Footer/>
-        </ShopContextProvider>
+        <Footer/>
+      </ShopContextProvider>
     </BrowserRouter>
   );
 }
