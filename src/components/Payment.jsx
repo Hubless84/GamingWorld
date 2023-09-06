@@ -97,7 +97,7 @@ const Payment = () => {
       <input type="text" name="fullName" placeholder="Card name holder" value={formData.fullName} onChange={handleInputChange} required />
       <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleInputChange} required/>
       <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleInputChange} required/>
-      <input type="tel" name="phone" placeholder="Enter CellPhone Number" value={formData.phone} onChange={handleInputChange} />
+      <input type="phone" name="phone" placeholder="Enter CellPhone Number" value={formData.phone} onChange={handleInputChange} />
       <input type="email" name="email" placeholder="Enter Email" required value={formData.email} onChange={handleInputChange} />
       <input type="text" name="cardNumber" placeholder="Card Number" value={formData.cardNumber} onChange={handleInputChange} />
       <input type="date" name="cardValidity" placeholder="Card Validity" value={formData.cardValidity} onChange={handleInputChange} />
