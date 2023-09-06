@@ -101,7 +101,7 @@ const Payment = () => {
       <input type="email" name="email" placeholder="Enter Email" required value={formData.email} onChange={handleInputChange} />
       <input type="text" name="cardNumber" placeholder="Card Number" value={formData.cardNumber} onChange={handleInputChange} />
       <input type="date" name="cardValidity" placeholder="Card Validity" value={formData.cardValidity} onChange={handleInputChange} />
-      <p>Price to pay: ₪{getTotalCartAmount()}</p>
+      <p>Price to pay:{getTotalCartAmount()}₪</p>
       {paymentStatus === 'success' ? (
         <div className="payment-success-message">
           Payment was successful!

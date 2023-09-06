@@ -33,7 +33,7 @@ export const Cart = () => {
 
       {!isCartEmpty ? (
         <>
-        <p id="subtotal"> Subtotal: ₪{totalAmount} </p> 
+        <p id="subtotal"> Subtotal: {totalAmount}₪ </p> 
           <div className="checkout">
             
             <button onClick={() => navigate("/")}> Continue Shopping </button>

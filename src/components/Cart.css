@@ -49,7 +49,7 @@
   display: list-item;
   justify-content: space-between;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .checkout {
@@ -60,7 +60,11 @@
 }
 
 #subtotal {
-  margin: 10px;
+  margin-top: 30px;
+  font-style: italic;
+  font-family: 'Trebuchet MS';
+  font-size: 20px;
+
 }
 
 .purchase button{
