@@ -6,7 +6,6 @@
     font-size: 0.5em;
     margin: auto;
     padding: auto;
-
 }
 
 .contact-cover {
@@ -28,7 +27,7 @@
     font-weight: bold;
 }
 
-input {
+.contact-cover input {
     border: 10px;
     background-color: rgb(229, 226, 226);
     width: 80%;
@@ -40,7 +39,7 @@ input {
     font-family: 'Times New Roman', Times, serif;
 }
 
-input:focus {
+.contact-cover input:focus {
     outline-color: rgb(32, 177, 255);
 }
 
@@ -63,8 +62,7 @@ input:focus {
 }
 
 .text {
-
-    position: relative;
+    position: absolute;
     bottom: 0.5%;
 }
 

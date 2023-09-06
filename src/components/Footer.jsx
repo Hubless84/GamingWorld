@@ -8,23 +8,23 @@ const Footer = () => {
     <div className="footer-content">
       <div className="social-media-links">
         <a href="https://www.twitter.com/example">
-          <TwitterLogo size={24} />
+          <TwitterLogo size={36} />
         </a>
         <a href="https://www.facebook.com/groups/593235252888066">
-          <FacebookLogo size={24} />
+          <FacebookLogo size={36} />
         </a>
         <a href="https://www.instagram.com/example">
-          <InstagramLogo size={24} />
+          <InstagramLogo size={36} />
         </a>
       </div>
 
-      <div className="logo">
-        <img src={require('../images/GamingWorld.png')} alt="logo" />
+      <div className="rights">
+        <h2>GamingWorld &#169; All Rights Reserved</h2>
       </div>
 
       <div className="legal-links">
-        <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/terms-conditions">Terms and Conditions</a>
+        <a href="/PrivacyPolicy">Privacy Policy</a>
+        <a href="/PrivacyPolicy">Terms and Conditions</a>
       </div>
     </div>
   </footer>
