@@ -72,18 +72,18 @@ function LolMain() {
 
       <h1 className='lol-opening-line'>Welcome to the Summoner's Rift</h1>
 
-      <div className="headlines">
-        <div className="headline">
+      <div className="headlines-lol">
+        <div className="headline-lol">
           <a href="https://www.leagueoflegends.com/en-gb/news/game-updates/">
             <h3>Live Updates!</h3>
           </a>
         </div>
-        <div className="headline">
+        <div className="headline-lol">
           <a href="https://liquipedia.net/leagueoflegends/A-Tier_Tournaments">
             <h3>Competitive Play!</h3>
           </a>
         </div>
-        <div className="headline">
+        <div className="headline-lol">
           <a href="https://signup.leagueoflegends.com/en-us/signup/redownload">
             <h3>Join Now!</h3>
           </a>

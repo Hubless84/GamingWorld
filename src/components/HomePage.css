@@ -8,6 +8,77 @@
   font-family: "CustomFont";
   src: url("../fonts/RolexLight.woff2");
 }
+.welcome-banner {
+  background: linear-gradient(to right, #f2c4c4, #e4d8b8, #cbd6ee);
+  border: 4px solid #ffcc00; 
+  padding: 120px;
+  text-align: center;
+  color: #fff; 
+  font-size: 24px;
+  height: 400px;
+  margin-bottom: 100px;
+  margin-top: 95px;
+}
+
+.welcome-banner h1 {
+  font-family: sans-serif; 
+  font-size: 36px; 
+  color: #fff; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-banner p {
+  font-family: sans-serif; 
+  font-size: 24px; 
+  color: #f2eaea; 
+  text-transform: uppercase; 
+  letter-spacing:1.5px; 
+  text-shadow: 2px 2px 4px rgba(0, 0.5, 0, 0.5); 
+}
+
+.headlines {
+  display: flex;
+  flex-direction: column;
+  background-image: url('../images/Lol/Lol6.jpeg'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 65%;
+  height: 400px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+  border: 2px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 84px;
+
+}
+
+.headline {
+  background-color: rgba(0, 0, 0, 0);
+  margin: 10px 0;
+  font-family: 'Arial', sans-serif;
+  font-size: 36px; 
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: 2px solid #ffcc00; 
+  padding: 10px 0; 
+  letter-spacing: 2px; 
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out; 
+}
+
+.headline a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.headline:hover {
+  background-color: rgba(0, 0, 0, 0.6); 
+}
 
 
   
@@ -23,31 +94,28 @@
   }
 
   .slideshow-container {
+    background-image: "../images/HomePage/gaming2.jpeg";
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 15px;  
-    margin-top: 30px; /* Adjust margin as needed */
+    margin-top: 30px;
   }
 
   .slideshow-title{
     color:black;
-    text-decoration: black;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     margin-top: 40px;
     font-size: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .sponsor-title{
     color:black;
-    text-decoration: rgb(255, 255, 255);
-    align-items: center;
-    justify-content: center;
     text-align: center;
     margin-top: 10px;
     font-size: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .sponsor-container {
