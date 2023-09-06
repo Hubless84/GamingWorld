@@ -23,8 +23,8 @@ const LolHistory = () => {
           <a href="./LolVideos">Videos</a>
       </div>
       <h2 className='history-title'>Game History:</h2>
-      <input className='history-input' type="text" onChange={e => setSearchText(e.target.value)}></input>
-      <button className='history-button' onClick={getPlayerGames}>Get the past 5 games from your player</button>
+      <input className='history-input' type="text" onChange={e => setSearchText(e.target.value)}></input><br></br>
+      <button className='history-button' onClick={getPlayerGames}>Last 5 games</button>
       {gameList.length !== 0 ? (
         <div className='game-list'>
           {gameList.map((gameData, index) =>

@@ -18,7 +18,7 @@ const LolVideos = () => {
           <a href="./LolHistory">Game History</a>
           <a href="./LolVideos">Videos</a>
       </div>
-      <div className='lol-videos-title'><h1>Most Popular League of Legends Videos</h1></div>
+      <div className='lol-videos-title'><h1>Top 6 videos of the week</h1></div>
       <div className="video-grid">
         {videoIds.map((videoId, index) => (
           <div className="video-item" key={index}>
