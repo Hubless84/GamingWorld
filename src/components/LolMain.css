@@ -14,6 +14,7 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 75px;
 }
 
 .lol-main-container h2::before {
@@ -27,11 +28,20 @@
   background-color: #ffcc00; 
 }
 
+.lol-main-container hr {
+  border: none;
+  height: 2px;
+  background-color: #333;
+  margin: 20px 0;
+  opacity: 0.7;
+}
+
 .mini-navbar {
   display: flex;
   justify-content: space-around;
   background-color: #1a1a1a; 
   margin-bottom: 25px;
+  margin-top: 85px;
   border-top: 2px solid #ffcc00; 
   border-bottom: 2px solid #ffcc00; 
 }
@@ -48,20 +58,21 @@
 }
 
 .mini-navbar a:hover {
-  background-color: #ffaa00;
+  background-color: white;
 }
 
 .lol-opening-line {
-  font-size: 48px;
+  font-size: 56px;
   color: #ffcc00; /* League of Legends yellow */
   text-transform: uppercase;
   text-align: center;
-  margin: 20px 0;
+  margin: 30px;
+  margin-bottom: 84px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   padding: 40px;
 }
 
-.headlines {
+.headlines-lol {
   display: flex;
   flex-direction: column;
   background-image: url('../images/Lol/Lol1.jpeg'); 
@@ -70,6 +81,7 @@
   background-position: center;
   color: #fff;
   max-width: 84%;
+  height: 250px;
   margin: 0 auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
   border: 2px solid #2a2a2a;
@@ -77,7 +89,7 @@
   padding: 20px;
 }
 
-.headline {
+.headline-lol {
   background-color: rgba(0, 0, 0, 0.6);
   margin: 10px 0;
   font-family: 'Arial', sans-serif;
@@ -92,12 +104,12 @@
   text-align: center;
 }
 
-.headline a {
+.headline-lol a {
   text-decoration: none;
   color: inherit;
 }
 
-.headline:hover {
+.headline-lol:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transition: background-color 0.3s ease-in-out;
 }
@@ -114,8 +126,6 @@
 }
 
 
-
-
 .video-placeholder iframe {
   position: absolute;
   top: 0;
@@ -125,19 +135,13 @@
 }
 
 .featured-champion {
-  
   padding: 20px;
   text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 50px;
+  margin: 125px;
 }
-
-
-
-
-  
 
 .featured-champion h3 {
   font-size: 32px;
@@ -146,7 +150,6 @@
   letter-spacing: 2px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 
 .featured-champion p {
   font-size: 18px;

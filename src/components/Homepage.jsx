@@ -1,58 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Slideshow from './Slideshow';
 import SponsorLogos from './Sponsors';
+import { useSpring, animated } from 'react-spring';
 import './HomePage.css'
 
 function HomePage() {
-  
+  const animationProps = useSpring({
+    from: { opacity: 0, transform: 'translateY(-50px)' },
+    to: { opacity: 1, transform: 'translateY(0)' },
+    config: { duration: 1000 },
+  });
 
 
     return (
 
       <div className='home-page'>
 
-<div className="headlines">
-        <div className="headline">
-          <a href="https://www.leagueoflegends.com/en-gb/news/game-updates/">
-            <h3>Live Updates!</h3>
-          </a>
+        <div className="welcome-banner">
+          <animated.h1 style={animationProps}>Welcome to the Gaming Extravaganza!</animated.h1>
+          <p>Prepare for an epic gaming experience like no other.</p>
         </div>
-        <div className="headline">
-          <a href="https://liquipedia.net/leagueoflegends/A-Tier_Tournaments">
-            <h3>Competitive Play!</h3>
-          </a>
+
+        <div className="headlines">
+          <div className="headline">
+            <a href="./LolMain">
+              <h3>League of Legends Universe</h3>
+            </a>
+          </div>
         </div>
-        <div className="headline">
-          <a href="https://signup.leagueoflegends.com/en-us/signup/redownload">
-            <h3>Join Now!</h3>
-          </a>
-        </div>
-      </div>
         
 
-      <>
-          <hr className="horizontal-line" />
-          <div className="slideshow-title">
-            <h1>Our best selling products</h1>
-          </div> 
-            <div className="slideshow-container">
-            <Link to="/Store">
-                <Slideshow />
-            </Link>
-            </div>  
+        <>
+        <hr className="horizontal-line" /> 
+        <div className="slideshow-title">
+          <h1>Our best selling products</h1>
+          <div className="slideshow-container">
+          <Link to="/Store">
+              <Slideshow />
+          </Link>
+          </div>  
+        </div> 
             
-            <hr className="horizontal-line" />
-            <div className="sponsor-title">
-              <h1>Our Sponsors</h1>
-            </div>
-            <div className="sponsor-container">
-                <SponsorLogos />
-            </div>
-        </>
+          <hr className="horizontal-line" />
+          <div className="sponsor-title">
+            <h1>Our Sponsors</h1>
+          </div>
+          <div className="sponsor-container">
+              <SponsorLogos />
+          </div>
+      </>
 
 
-        </div>  
+      </div>  
   );
 }
 

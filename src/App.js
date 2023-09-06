@@ -19,6 +19,7 @@ import Payment from './components/Payment';
 import {Cart} from './components/Cart';
 import "./App.css"
 import PaymentSuccess from './components/PaymentSuccess';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
             <Routes>
               <Route path="/" element ={<HomePage/>} />
               <Route path="/BeAPro" element ={<BeAPro/>} />
-              <Route path="/AboutGames" element ={<AboutGames/>} />
+              <Route path="/PrivacyPolicy" element ={<PrivacyPolicy/>} />
               <Route path="/LolHistory" element ={<LolHistory/>} />
               <Route path="/LolMain" element ={<LolMain/>} />
               <Route path="/LolVideos" element ={<LolVideos/>} />
