@@ -8,9 +8,20 @@ const SignupForm = () => {
   const [popupMessage, setPopupMessage] = useState("");
   const navigate = useNavigate();
 
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    email: ""
+});
+
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const showPopup = (message) => {
     setPopupMessage(message);
-    setPopupStyle("login-popup");
+    setPopupStyle("signup-popup");
     setTimeout(() => hidePopup(), 3000);
   };
 
@@ -18,6 +29,14 @@ const SignupForm = () => {
     setPopupStyle("hide");
     setPopupMessage("");
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+        ...formData,
+        [name]: value
+    });
+};
 
   const handleSignup = async () => {
     const username = document.querySelector('[name="username"]').value;
@@ -31,8 +50,17 @@ const SignupForm = () => {
         showPopup("Username or email already exists");
         return;
       }
+      if(!isValidEmail(formData.email)){
+        showPopup("emaill is incorrect");
+        return;
+      }
+      if(formData.username.length < 4 || formData.password.length < 4){
+        showPopup("User name and password must be higher then 4 digits")
+        return
+      }
 
-      // If not exists, proceed with user registration
+  
+      // If username and email not exists And the details match the requirements, proceed with user registration
       await axios.post("/api/signup", { username, email, password });
       showPopup("User registered successfully");
       setTimeout(() => {
@@ -52,9 +80,9 @@ const SignupForm = () => {
   return (
     <div className="signup-cover">
       <h1>Signup</h1>
-      <input type="text" name="username" placeholder="Create Username" required />
-      <input type="email" name="email" placeholder="Enter Email" required />
-      <input type="password" name="password" placeholder="Enter Password" required />
+      <input type="text" name="username" placeholder="Create Username" value={formData.username} onChange={handleInputChange} />
+      <input type="email" name="email" placeholder="Enter Email" value={formData.email} onChange={handleInputChange} />
+      <input type="password" name="password" placeholder="Enter Password" value={formData.password} onChange={handleInputChange} />
       <div className="buttons" onClick={handleSignup}>
         Sign up
       </div>

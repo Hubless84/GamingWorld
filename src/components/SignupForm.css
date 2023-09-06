@@ -92,10 +92,10 @@ input:focus {
     transform: scale(0);
 }
 
-.login-popup {
-    position:absolute;
-    height: 20em;
-    width: 20em;
+.signup-popup {
+    position:fixed;
+    height: 22em;
+    width: 22em;
     display:flex;
     flex-direction: column;
     align-items: center;

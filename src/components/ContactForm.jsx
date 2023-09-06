@@ -15,14 +15,14 @@ const ContactForm = () => {
 
     const showPopup = (message) => {
         setPopupMessage(message);
-        setPopupStyle("login-popup");
+        setPopupStyle("contact-popup");
         setTimeout(() => hidePopup(), 3000);
-      };
+    };
 
-      const hidePopup = () => {
+    const hidePopup = () => {
         setPopupStyle("hide");
         setPopupMessage("");
-      };
+    };
 
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,7 +43,7 @@ const ContactForm = () => {
                 showPopup("Last name input is empty");
                 return;
             }
-            if(phoneNumber.length > 10){
+            if((phoneNumber).length !== 10){
                 showPopup("Phone number is incorrect");
                 return;
             }  

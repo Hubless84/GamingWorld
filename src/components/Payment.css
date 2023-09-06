@@ -10,22 +10,11 @@
   align-items: center; 
   justify-content: center;
   margin: 0px auto;
+  margin-top: 20px;
 }
 
-/* Style the card element */
-.card-element {
-  height: 40px;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  width: 100%; 
-  margin-bottom:  10px;
-  justify-content: center;
-  align-items: center;
-}
 
-/* Style the button */
+/* Payment button style */ 
 .payment-button {
   display: block;
   width: 100%;
@@ -33,7 +22,7 @@
   background-color: #000000;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
 }
@@ -43,14 +32,25 @@
   cursor: not-allowed;
 }
 
-/* Add styles for error messages */
 .error-message {
   color: #dc3545;
   margin-top: 8px;
 }
 
-/* Add spacing between elements */
-.spacing {
-  margin-bottom: 10px;
-  
+.payment-popup {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  height: 22em;
+  width: 22em;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.15em;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  transform: scale(1);
+  transition: 1.5s;
+  margin: center;
+  text-align: center;
 }
