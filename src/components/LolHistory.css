@@ -3,7 +3,6 @@
   justify-content: space-around;
   background-color: #333;
   padding: 10px;
-  margin-bottom: 30px;
 }
 
 .mini-navbar a {
@@ -16,67 +15,78 @@
 }
 
 .game-history-container {
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  margin: 0;
   text-align: center;
 }
 
-
 .history-title {
-  font-size: 24px;
-  margin-bottom: 16px;
+  text-align: center;
+  font-size: 36px;
+  color: #ffcc00;
+  text-transform: uppercase;
+  margin: 20px 0;
 }
 
-
 .history-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 8px;
-  font-size: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ffcc00;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
 }
 
 .history-button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
+  display: inline;
+  width: 10%;
+  padding: 10px;
+  background-color: #ffcc00;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-transform: uppercase;
+  color: #111;
   cursor: pointer;
-  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
+.history-button:hover {
+  background-color: #ffaa00;
+}
 
 .game-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
 }
-
 
 .game-card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 16px;
-  margin: 16px;
+  flex: 0 0 45%;
+  padding: 20px;
+  border: 2px solid #ffcc00;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+  margin: 10px;
 }
-
-
-.data-label {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-
-.participant-info {
-  font-size: 14px;
-  margin: 6px 0;
-}
-
 
 .participant-list {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
+}
+
+.participant-info {
+  color: #fff;
+  font-size: 18px;
 }

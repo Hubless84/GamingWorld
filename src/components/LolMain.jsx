@@ -69,6 +69,24 @@ function LolMain() {
         <a href="./LolHistory">Game History</a>
         <a href="./LolVideos">Videos</a>
       </div>
+
+      <div className="headlines">
+    <div className="headline">
+      <a href="/fresh-content">
+        <h2>Fresh Content!</h2>
+      </a>
+    </div>
+    <div className="headline">
+      <a href="/live-stats">
+        <h2>Live Stats!</h2>
+      </a>
+    </div>
+    <div className="headline">
+      <a href="/competitive-play">
+        <h2>Competitive Play!</h2>
+      </a>
+    </div>
+  </div>
       
       <div>
   
@@ -82,28 +100,21 @@ function LolMain() {
         <a href={currentChampion.href}>Learn More</a>
       </div>
     </div>
-
-      <div className="league-component">
-        <div className="headlines">
-          <h2>Fresh Content!</h2>
-          <h2>Live Stats!</h2>
-          <h2>Competitive Play!</h2>
-        </div>
-      </div>
-
       
-      <div className="video-placeholder">
-        
-        <iframe
-          width="50%"
-          height="400"
-          src="https://www.youtube.com/embed/G01ozdpUqBk"
-          title="NEW UPDATED TIER LIST for PATCH 13.17 - League of Legends"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-      </div>
+  <div className="video-header">
+    <h2>Monthly Patch Update</h2>
+  </div>
+
+  <div className="video-placeholder">
+    <iframe
+      src="https://www.youtube.com/embed/G01ozdpUqBk"
+      title="NEW UPDATED TIER LIST for PATCH 13.17 - League of Legends"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowFullScreen
+    ></iframe>
+  </div>
+
 
     </div>
   );
