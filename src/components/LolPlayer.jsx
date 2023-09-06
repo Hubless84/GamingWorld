@@ -29,8 +29,8 @@ function LolPlayer(){
 
         <div className="player-page-container">
 
-        <h1 className='lol-h1'> League of Legends Player Search</h1>
-        <input className='lol-input' type="text" onChange={e => setSearchText(e.target.value)} />
+        <h1 className='lol-h1'> Summoner search:</h1>
+        <input className='lol-input' type="text" onChange={e => setSearchText(e.target.value)} /><br></br>
         <button className='lol-button' onClick={searchForPlayer}>Search</button>
         {JSON.stringify(playerData) !== '{}' ? (
             <div className='player-info'>
@@ -40,7 +40,7 @@ function LolPlayer(){
                 <img className='lol-img' src={`http://ddragon.leagueoflegends.com/cdn/13.16.1/img/profileicon/${playerData.profileIconId}.png`} alt="Profile Icon" />
             </div>
         ) : (
-            <p>No player data available</p>
+            <p></p>
         )}
        </div>
   </div>

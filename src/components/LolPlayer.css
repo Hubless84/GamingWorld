@@ -1,21 +1,4 @@
 
-
-.mini-navbar {
-  display: flex;
-  justify-content: space-around;
-  background-color: #333;
-  padding: 10px;
-}
-
-.mini-navbar a {
-  color: white;
-  text-decoration: none;
-}
-
-.mini-navbar a:hover {
-  text-decoration: underline;
-}
-
 .player-page-container {
   justify-content: center;
   align-items: center;
@@ -30,10 +13,11 @@
   color: #ffcc00;
   text-transform: uppercase;
   margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .lol-input {
-  width: 100%;
+  width: 33%;
   padding: 10px;
   border: 2px solid #ffcc00;
   border-radius: 5px;

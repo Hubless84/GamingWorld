@@ -1,3 +1,65 @@
+.lol-main-container h2 {
+  background-color: #1a1a1a; 
+  width: 50%;
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-family: 'League of Legends', sans-serif; 
+  font-size: 26px; 
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lol-main-container h2::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 3px;
+  background-color: #ffcc00; 
+}
+
+.mini-navbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1a1a1a; 
+  margin-bottom: 25px;
+  border-top: 2px solid #ffcc00; 
+  border-bottom: 2px solid #ffcc00; 
+}
+
+.mini-navbar a {
+  color: #ffcc00; 
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mini-navbar a:hover {
+  background-color: #ffaa00;
+}
+
+.lol-opening-line {
+  font-size: 48px;
+  color: #ffcc00; /* League of Legends yellow */
+  text-transform: uppercase;
+  text-align: center;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 40px;
+}
 
 .headlines {
   display: flex;
@@ -7,7 +69,7 @@
   background-repeat: no-repeat;
   background-position: center;
   color: #fff;
-  max-width: 800px;
+  max-width: 84%;
   margin: 0 auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
   border: 2px solid #2a2a2a;
@@ -51,31 +113,7 @@
   overflow: hidden; 
 }
 
-.video-header {
-  background-color: #1a1a1a; 
-  color: #fff;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  font-family: 'League of Legends', sans-serif; 
-  font-size: 30px; 
-  text-transform: uppercase;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  position: relative;
-}
 
-.video-header::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 3px;
-  background-color: #ffcc00; /* League of Legends yellow */
-}
 
 
 .video-placeholder iframe {
@@ -94,21 +132,6 @@
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 50px;
-}
-
-
-.featured-champion h2 {
-  font-size: 36px;
-  margin: 10px 0;
-  color: #e91e63; /* League of Legends red */
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(32, 60, 79, 0.6);
-  background-image: linear-gradient(to right, #e91e63, #ff9800); 
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 

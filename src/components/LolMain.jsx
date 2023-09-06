@@ -63,43 +63,42 @@ function LolMain() {
 
 
   return (
-    <div>
+    <div className='lol-main-container'>
       <div className="mini-navbar">
         <a href="./LolPlayer">Find a Player</a>
         <a href="./LolHistory">Game History</a>
         <a href="./LolVideos">Videos</a>
       </div>
 
+      <h1 className='lol-opening-line'>Welcome to the Summoner's Rift</h1>
+
       <div className="headlines">
-    <div className="headline">
-      <a href="/fresh-content">
-        <h2>Fresh Content!</h2>
-      </a>
-    </div>
-    <div className="headline">
-      <a href="/live-stats">
-        <h2>Live Stats!</h2>
-      </a>
-    </div>
-    <div className="headline">
-      <a href="/competitive-play">
-        <h2>Competitive Play!</h2>
-      </a>
-    </div>
-  </div>
-      
-      <div>
+        <div className="headline">
+          <a href="https://www.leagueoflegends.com/en-gb/news/game-updates/">
+            <h3>Live Updates!</h3>
+          </a>
+        </div>
+        <div className="headline">
+          <a href="https://liquipedia.net/leagueoflegends/A-Tier_Tournaments">
+            <h3>Competitive Play!</h3>
+          </a>
+        </div>
+        <div className="headline">
+          <a href="https://signup.leagueoflegends.com/en-us/signup/redownload">
+            <h3>Join Now!</h3>
+          </a>
+        </div>
+      </div>
   
       <div className="featured-champion">
         <h2>5 Most Played Champions</h2>
-        <hr></hr>
+        <br></br>
         <h3>{currentChampion.name}</h3>
         <p>{currentChampion.description}</p>
         <img src={currentChampion.image} alt={currentChampion.name} />
         <p>Role: {currentChampion.role}</p>
         <a href={currentChampion.href}>Learn More</a>
       </div>
-    </div>
       
   <div className="video-header">
     <h2>Monthly Patch Update</h2>
