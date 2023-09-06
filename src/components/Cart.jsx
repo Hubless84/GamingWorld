@@ -33,8 +33,9 @@ export const Cart = () => {
 
       {!isCartEmpty ? (
         <>
+        <p id="subtotal"> Subtotal: ₪{totalAmount} </p> 
           <div className="checkout">
-            <p> Subtotal: ₪{totalAmount} </p>
+            
             <button onClick={() => navigate("/")}> Continue Shopping </button>
             <button
               onClick={() => {
@@ -45,6 +46,7 @@ export const Cart = () => {
               {" "}
               Reset Cart{" "}
             </button>
+            
           </div>
           <div className="purchase">
             <button onClick={handleContinuePurchase}>Continue purchase</button>

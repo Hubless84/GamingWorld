@@ -1,3 +1,5 @@
+
+
 .mini-navbar {
   display: flex;
   justify-content: space-around;
@@ -14,23 +16,89 @@
   text-decoration: underline;
 }
 
-.league-component {
-    background-color: #111;
-    color: #fff;
-    padding: 20px;
-    border: 2px solid #333;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .headlines {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .headlines h2 {
-    margin: 10px 0;
-  }
-  
+.player-page-container {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  margin: 0;
+  text-align: center; 
+}
+
+.lol-h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #ffcc00;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+.lol-input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ffcc00;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
+}
+
+.lol-button {
+  display: inline;
+  width: 10%;
+  padding: 10px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-transform: uppercase;
+  color: #111;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lol-button:hover {
+  background-color: #ffaa00;
+}
+
+.lol-h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #ffcc00;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.lol-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 33%;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.player-page-container p {
+  text-align: center;
+  color: #e91e63;
+  margin-top: 20px;
+  font-size: 28px;
+  font-weight: bolder;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #ffcc00; /* League of Legends yellow */
+  border-radius: 10px;
+  background-color: #1a1a1a; 
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
