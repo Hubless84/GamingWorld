@@ -18,16 +18,6 @@ CREATE TABLE RegisteredUser (
     RegistrationDate DATE,
     UNIQUE (Username)
 );
-CREATE TABLE Fifa23Scores (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INT NOT NULL
-);
-CREATE TABLE ValorantScores (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INT NOT NULL
-);
 -- Product table
 CREATE TABLE Products (
     product_id INT PRIMARY KEY,
@@ -54,20 +44,6 @@ CREATE TABLE Contact (
     last_name VARCHAR(15),
     phone_number VARCHAR(10) NOT NULL,
     email VARCHAR(255) NOT NULL
-);
-CREATE TABLE leaderboard (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    score INTEGER NOT NULL
-);
-CREATE TABLE IndividualScores (
-    score_id UUID PRIMARY KEY,
-    registered_user_uid UUID NOT NULL REFERENCES RegisteredUser(person_uid),
-    game_name VARCHAR(255) NOT NULL,
-    score INT NOT NULL CHECK (score >= 0),
-    -- Assuming scores are non-negative
-    submission_date DATE NOT NULL,
-    UNIQUE (registered_user_uid, game_name)
 );
 -- Inserting data into Products
 INSERT INTO products (product_id, name, price, type, image_path)

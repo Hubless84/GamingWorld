@@ -71,10 +71,9 @@ const Payment = () => {
       });
 
       if (response.ok) {
-        // Payment successful, show success message
         setPaymentStatus('success');
         resetCart();
-        navigate('/PaymentSuccess'); // move to success page
+        navigate('/PaymentSuccess'); 
       } else {
         console.log('Payment failed:', response.statusText);
         setPaymentStatus('error');

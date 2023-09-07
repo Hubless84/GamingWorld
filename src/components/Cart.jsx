@@ -14,7 +14,6 @@ export const Cart = () => {
     navigate("/Payment", { state: { totalAmount: totalAmount, cartItems: cartItems } });
   };
 
-  // Check if there are any items in the cart
   const isCartEmpty = Object.values(cartItems).every(quantity => quantity === 0);
 
   return (

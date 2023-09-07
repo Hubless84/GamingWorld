@@ -6,7 +6,7 @@ export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
 
-  // Define getDefaultCart using products after it's initialized
+  // Define getDefaultCart using products 
   const getDefaultCart = () => {
     let cart = {};
     for (const product of products) {
@@ -16,20 +16,16 @@ export const ShopContextProvider = (props) => {
   };
 
   useEffect(() => {
-    // Fetch product data when the component mounts
     fetch("/api/products")
       .then((response) => response.json())
       .then((data) => {
         console.log("Fetched products:", data);
-        // Update the products state with the fetched data
         setProducts(data);
 
-        // Load cart data from localStorage AFTER setting products
         const storedCart = localStorage.getItem("cart");
         if (storedCart) {
           setCartItems(JSON.parse(storedCart));
         } else {
-          // Initialize the cart with default values if not found in localStorage
           setCartItems(getDefaultCart());
         }
       })
@@ -41,16 +37,12 @@ export const ShopContextProvider = (props) => {
   const getTotalCartAmount = () => {
     console.log('cartItems:', cartItems);
     let totalAmount = 0;
-    // Loop through each item in cartItems
     for (const item in cartItems) {
-      // Check if the quantity is greater than 0
       if (cartItems[item] > 0) {
-        // Find the corresponding product using its product_id
         const itemInfo = products.find((product) => product.product_id === Number(item));
         
         // Check if itemInfo is found and it has a valid price
         if (itemInfo && typeof itemInfo.price === 'number') {
-          // Calculate and add the subtotal for this item to the totalAmount
           totalAmount += cartItems[item] * itemInfo.price;
         }
       }
@@ -74,7 +66,6 @@ export const ShopContextProvider = (props) => {
       [itemId]: prev[itemId] + 1,
     }));
 
-    // Update localStorage
     const updatedCart = { ...cartItems, [itemId]: cartItems[itemId] + 1 };
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
@@ -86,7 +77,6 @@ export const ShopContextProvider = (props) => {
       [itemId]: prev[itemId] - 1,
     }));
 
-    // Update localStorage
     const updatedCart = { ...cartItems, [itemId]: cartItems[itemId] - 1 };
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
