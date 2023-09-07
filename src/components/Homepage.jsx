@@ -9,7 +9,7 @@ function HomePage() {
   const animationProps = useSpring({
     from: { opacity: 0, transform: 'translateY(-50px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
-    config: { duration: 1000 },
+    config: { duration: 2000 },
   });
 
 
@@ -18,7 +18,7 @@ function HomePage() {
       <div className='home-page'>
 
         <div className="welcome-banner">
-          <animated.h1 style={animationProps}>Welcome to the Gaming Extravaganza!</animated.h1>
+          <animated.h1 style={animationProps}>Welcome to Gaming World!</animated.h1>
           <p>Prepare for an epic gaming experience like no other.</p>
         </div>
 

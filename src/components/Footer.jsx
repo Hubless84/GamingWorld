@@ -19,12 +19,11 @@ const Footer = () => {
       </div>
 
       <div className="rights">
-        <h2>GamingWorld &#169; All Rights Reserved</h2>
+        <h2>GamingWorld 2023 All Rights Reserved &#169;</h2>
       </div>
 
       <div className="legal-links">
-        <a href="/PrivacyPolicy">Privacy Policy</a>
-        <a href="/PrivacyPolicy">Terms and Conditions</a>
+        <a href="/PrivacyPolicy">Privacy Policy  &  Terms and Conditions </a>
       </div>
     </div>
   </footer>

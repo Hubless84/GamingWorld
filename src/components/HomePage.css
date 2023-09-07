@@ -9,24 +9,27 @@
   src: url("../fonts/RolexLight.woff2");
 }
 .welcome-banner {
-  background: linear-gradient(to right, #f2c4c4, #e4d8b8, #cbd6ee);
-  border: 4px solid #ffcc00; 
-  padding: 120px;
+  background: linear-gradient(to right, #83c0f2, #436acd, #002e90);
+  border: 2px solid #3498db; 
+  padding: 10px;
   text-align: center;
   color: #fff; 
   font-size: 24px;
-  height: 400px;
+  height: 300px;
   margin-bottom: 100px;
-  margin-top: 95px;
+  margin-top: 90px;
+  border-radius: 30px;
+
 }
 
 .welcome-banner h1 {
   font-family: sans-serif; 
-  font-size: 36px; 
+  font-size: 46px; 
   color: #fff; 
   text-transform: uppercase; 
   letter-spacing: 2px; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 90px;
 }
 
 .welcome-banner p {

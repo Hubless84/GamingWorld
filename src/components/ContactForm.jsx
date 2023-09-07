@@ -79,7 +79,7 @@ const ContactForm = () => {
                 <input type="text" name="last_name" placeholder="Last name" value={formData.last_name} onChange={handleInputChange} />
                 <input type="phone" name="phone_number" placeholder="Enter CellPhone Number" value={formData.phone_number} onChange={handleInputChange} required/>
                 <input type="email" name="email" placeholder="Enter Email" value={formData.email} onChange={handleInputChange} required />
-			<div className="buttons" onClick={handleSubmit}>Add Contact</div>
+			<div className="contact-buttons" onClick={handleSubmit}>Add Contact</div>
         
             <div className={popupStyle}>
                  <h3>Contact Status</h3>

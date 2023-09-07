@@ -19,6 +19,7 @@ const PrivacyPolicy = () => {
         varius est sollicitudin. Suspendisse potenti. Nunc efficitur justo id urna venenatis, nec
         varius est sollicitudin.
       </p>
+      <p>GamingWorld 2023</p>
     </div>
   );
 };

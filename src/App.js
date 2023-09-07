@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
-import AboutGames from './components/AboutGames';
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import ErrorPage from "./components/ErrorPage";
@@ -17,9 +16,9 @@ import LolVideos from './components/LolVideos';
 import { ShopContextProvider } from "./components/Shop-Context";
 import Payment from './components/Payment';
 import {Cart} from './components/Cart';
-import "./App.css"
 import PaymentSuccess from './components/PaymentSuccess';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import "./App.css"
 
 
 function App() {

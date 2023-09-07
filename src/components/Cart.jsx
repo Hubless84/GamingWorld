@@ -18,7 +18,7 @@ export const Cart = () => {
   const isCartEmpty = Object.values(cartItems).every(quantity => quantity === 0);
 
   return (
-    <div className="cart">
+    <div className="cart-title">
       <div>
         <h1>Your Cart Items</h1>
       </div>
@@ -43,8 +43,7 @@ export const Cart = () => {
                 navigate("/Cart");
               }}
             >
-              {" "}
-              Reset Cart{" "}
+              Reset Cart
             </button>
             
           </div>
