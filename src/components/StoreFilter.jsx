@@ -2,6 +2,7 @@ import React from "react";
 import "./StoreFilter.css";
 import "./Store.jsx";
 
+//filter for store
 let StoreFilter = (props) => {
     function onFilterValueChanged(event){
         props.onFilterValueSelected(event.target.value)

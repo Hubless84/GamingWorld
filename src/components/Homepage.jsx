@@ -5,6 +5,7 @@ import SponsorLogos from './Sponsors';
 import { useSpring, animated } from 'react-spring';
 import './HomePage.css'
 
+//homepage component
 function HomePage() {
   const animationProps = useSpring({
     from: { opacity: 0, transform: 'translateY(-50px)' },
@@ -12,11 +13,8 @@ function HomePage() {
     config: { duration: 2000 },
   });
 
-
     return (
-
       <div className='home-page'>
-
         <div className="welcome-banner">
           <animated.h1 style={animationProps}>Welcome to Gaming World!</animated.h1>
           <p>Prepare for an epic gaming experience like no other.</p>

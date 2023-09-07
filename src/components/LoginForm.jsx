@@ -10,10 +10,12 @@ const LoginForm = ({ setLoggedInUser }) => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  //function to show the password
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
+  //function that displays a popup message
   const showPopup = (message) => {
     setPopupMessage(message);
     setPopupStyle("login-popup");
@@ -47,6 +49,7 @@ const LoginForm = ({ setLoggedInUser }) => {
     }
   };
 
+  //login form
   return (
     <div className="login-cover">
       <h1>Login</h1>

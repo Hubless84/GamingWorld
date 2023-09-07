@@ -14,11 +14,13 @@ const SignupForm = () => {
     email: ""
 });
 
+  //regex for email check
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
+  //function that displays a popup message
   const showPopup = (message) => {
     setPopupMessage(message);
     setPopupStyle("signup-popup");
@@ -50,10 +52,12 @@ const SignupForm = () => {
         showPopup("Username or email already exists");
         return;
       }
+      //email check
       if(!isValidEmail(formData.email)){
         showPopup("emaill is incorrect");
         return;
       }
+      //username & password check
       if(formData.username.length < 4 || formData.password.length < 4){
         showPopup("User name and password must be higher then 4 digits")
         return
@@ -77,6 +81,7 @@ const SignupForm = () => {
     }
   };
 
+//signup form
   return (
     <div className="signup-cover">
       <h1>Signup</h1>

@@ -47,8 +47,6 @@ const championData = [
 
 function LolMain() {
 
-  
-
   const [currentChampionIndex, setCurrentChampionIndex] = useState(0);
 
   useEffect(() => {

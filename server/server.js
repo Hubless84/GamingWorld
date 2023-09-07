@@ -78,7 +78,7 @@ const riotApiKey = 'RGAPI-fedb64e9-524a-4d01-a629-fdc4cec6e9f1';
         
         const response = await fetch(apiURL, {
             headers: {
-                'X-Riot-Token': riotApiKey, // Replace with your Riot API key
+                'X-Riot-Token': riotApiKey,
             },
         });
         

@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
+//context provider for managing a shopping cart
+
 export const ShopContext = createContext(null);
 
 export const ShopContextProvider = (props) => {
@@ -59,6 +61,7 @@ export const ShopContextProvider = (props) => {
     return CartAmount;
   };
 
+  //function to add product to cart
   const addToCart = (itemId) => {
     // Update cartItems state
     setCartItems((prev) => ({
@@ -70,6 +73,7 @@ export const ShopContextProvider = (props) => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  //function to remove product from cart
   const removeFromCart = (itemId) => {
     // Update cartItems state
     setCartItems((prev) => ({
@@ -81,10 +85,12 @@ export const ShopContextProvider = (props) => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  //function to update the items in the cart
   const updateCartItemCount = (newAmount, itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
   };
 
+  //function to remove all items in the cart
   const resetCart = () => {
     setCartItems(getDefaultCart(), () => {
       localStorage.removeItem("cart")
@@ -96,6 +102,7 @@ export const ShopContextProvider = (props) => {
     setCartItems(getTotalCartAmount());
   };
 
+  //funciton to get all the products in the cart
   const getProductsInCart = () => {
     const productsInCart = [];
   
@@ -116,7 +123,6 @@ export const ShopContextProvider = (props) => {
   };
 
   const contextValue = {
-    cartItems,
     addToCart,
     updateCartItemCount,
     removeFromCart,
@@ -128,6 +134,7 @@ export const ShopContextProvider = (props) => {
     getProductsInCart,
   };
 
+  //return contex value
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}

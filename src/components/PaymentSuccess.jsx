@@ -2,8 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import "./PaymentSuccess.css"; 
 
-
-
+//success component if the payment is success
 const PaymentSuccess = () => {
     const navigate = useNavigate();
   return (

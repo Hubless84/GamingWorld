@@ -4,15 +4,17 @@ import { ShoppingCart } from 'phosphor-react';
 import { ShopContext } from "./Shop-Context";
 import './NavBar.css';
 
+//Navbar component
 const NavBar = ({ loggedInUser, setLoggedInUser }) => {
   const { getTotalCartItemsCount } = useContext(ShopContext);
   const cartItemCount = getTotalCartItemsCount();
 
+  //function to handle when user is logout
   const handleLogout = () => {
     localStorage.removeItem('loggedInUser');
     setLoggedInUser(null);
   };
-
+ 
   return (
     <nav className="navbar">
       <div className="login-register">

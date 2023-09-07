@@ -2,6 +2,7 @@ import React from 'react';
 import './Footer.css';
 import { InstagramLogo,FacebookLogo,TwitterLogo } from 'phosphor-react';
 
+//footer component
 const Footer = () => {
   return (
     <footer className="footer">

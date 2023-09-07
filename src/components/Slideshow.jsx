@@ -5,6 +5,7 @@ import BestGamingPad from '../images/HomePage/BestGamingPad.jpg'
 import BestGamingHeadphones from '../images/HomePage/BestGamingHeadphones.jpg'
 import "./Slideshow.css";
 
+//component for images slideshow in the homepage
 const Slideshow = () => {
   const images = [BestGamingMouse, BestGamingKeyboard, BestGamingPad, BestGamingHeadphones];
   const [currentIndex, setCurrentIndex] = useState(0);

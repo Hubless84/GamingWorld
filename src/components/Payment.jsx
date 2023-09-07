@@ -3,17 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import './Payment.css';
 import { ShopContext } from './Shop-Context';
 
+//payment component
 const Payment = () => {
   const [popupStyle, setPopupStyle] = useState('hide');
   const [popupMessage, setPopupMessage] = useState('');
   const navigate = useNavigate();
   const { getProductsInCart, getTotalCartAmount, resetCart } = useContext(ShopContext);
 
+  //regex for email check
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
+  //function that displays a popup message
   const showPopup = (message) => {
     setPopupMessage(message);
     setPopupStyle('payment-popup');
@@ -91,6 +94,7 @@ const Payment = () => {
     });
   };
 
+  //payment form
   return (
     <form className="payment-form" onSubmit={handleSubmit}>
       <input type="text" name="fullName" placeholder="Card name holder" value={formData.fullName} onChange={handleInputChange} required />

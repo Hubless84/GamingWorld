@@ -5,6 +5,7 @@ import sponsor3 from '../images/HomePage/sponsor3.jpeg';
 import sponsor4 from '../images/HomePage/sponsor4.png';
 import './Sponsors.css';
 
+//Sponsors Component for homepage
 const Sponsors = () => {
   const sponsorLogos = [sponsor1, sponsor2, sponsor3, sponsor4];
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import "./ContactForm.css";
 
+//Contact Component
 const ContactForm = () => {
     const [popupStyle, setPopupStyle] = useState("hide");
     const [popupMessage, setPopupMessage] = useState("");
@@ -13,6 +14,7 @@ const ContactForm = () => {
         email: ""
     });
 
+    //function that displays a popup message
     const showPopup = (message) => {
         setPopupMessage(message);
         setPopupStyle("contact-popup");
@@ -24,6 +26,7 @@ const ContactForm = () => {
         setPopupMessage("");
     };
 
+    //regex for email check
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
@@ -32,33 +35,39 @@ const ContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        
         try {
             const phoneNumber = formData.phone_number;
 
+            //first name check
             if (formData.first_name===""){
                 showPopup("First name input is empty");
                 return;
             }
+            //last name check
             if (formData.last_name==="" ){
                 showPopup("Last name input is empty");
                 return;
             }
+            //phone check that he is no longer then 10 digits
             if((phoneNumber).length !== 10){
                 showPopup("Phone number is incorrect");
                 return;
             }  
+            //phone check to make sure the phone is only include numbers
             if(!/^\d+$/.test(phoneNumber)){
                 showPopup("Phone number is incorrect");
                 return;
             }
+            //email check
             if(!isValidEmail(formData.email)){
                 showPopup("emaill is incorrect");
                 return;
             }
-
+            //procced if all the details are ok
             await axios.post('/api/add-contact', formData);
             // Show the success popup
-            showPopup("contact-popup"); 
+            showPopup("Contact Added Successfully"); 
             setTimeout(() => showPopup("hide"), 3000);
         } catch (error) {
             console.error('Error adding contact:', error);
@@ -73,6 +82,7 @@ const ContactForm = () => {
         });
     };
 
+    //Contact form
     return (
         <div className="contact-cover">
             <h1>Contact</h1>
