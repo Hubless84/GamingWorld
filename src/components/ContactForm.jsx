@@ -57,7 +57,8 @@ const ContactForm = () => {
             }
 
             await axios.post('/api/add-contact', formData);
-            showPopup("contact-popup"); // Show the success popup
+            // Show the success popup
+            showPopup("contact-popup"); 
             setTimeout(() => showPopup("hide"), 3000);
         } catch (error) {
             console.error('Error adding contact:', error);

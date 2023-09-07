@@ -60,14 +60,14 @@ const SignupForm = () => {
       }
 
   
-      // If username and email not exists And the details match the requirements, proceed with user registration
+      // If username and email not exists AND the details are ok, continue
       await axios.post("/api/signup", { username, email, password });
       showPopup("User registered successfully");
       setTimeout(() => {
         navigate('/LoginForm');
       }, 3300);
       
-      // Clear input fields after successful registration
+      // Clear input after successful registration
       document.querySelector('[name="username"]').value = "";
       document.querySelector('[name="email"]').value = "";
       document.querySelector('[name="password"]').value = "";

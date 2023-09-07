@@ -1,4 +1,4 @@
-/* Add styles to your payment form container */
+
 .payment-form {
   width: 600px;
   height: 420px;
@@ -14,7 +14,7 @@
 }
 
 
-/* Payment button style */ 
+
 .payment-button {
   display: block;
   width: 100%;
