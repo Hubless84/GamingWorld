@@ -44,7 +44,7 @@ function HomePage() {
             
           <hr className="horizontal-line" />
           <div className="sponsor-title">
-            <h1>Our Sponsors</h1>
+            <h1>Supported By</h1>
           </div>
           <div className="sponsor-container">
               <SponsorLogos />
