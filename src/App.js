@@ -10,7 +10,6 @@ import ContactForm from "./components/ContactForm";
 import Store from "./components/Store";
 import LolPlayer from "./components/LolPlayer";
 import LolHistory from './components/LolHistory';
-import BeAPro from "./components/BeAPro";
 import LolMain from "./components/LolMain";
 import LolVideos from './components/LolVideos';
 import { ShopContextProvider } from "./components/Shop-Context";
@@ -38,7 +37,6 @@ function App() {
         <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
             <Routes>
               <Route path="/" element ={<HomePage/>} />
-              <Route path="/BeAPro" element ={<BeAPro/>} />
               <Route path="/PrivacyPolicy" element ={<PrivacyPolicy/>} />
               <Route path="/LolHistory" element ={<LolHistory/>} />
               <Route path="/LolMain" element ={<LolMain/>} />
