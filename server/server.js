@@ -28,7 +28,7 @@ const pool = new Pool({
 
 
 // Riot API handling
-const riotApiKey = 'RGAPI-fedb64e9-524a-4d01-a629-fdc4cec6e9f1';
+const riotApiKey = 'RGAPI-5202bb1e-b677-4c1b-af53-a11a11c7924d';
 
   //getting 
   function getPlayerPUUID(playerName){

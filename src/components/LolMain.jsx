@@ -54,7 +54,7 @@ function LolMain() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentChampionIndex((prevIndex) => (prevIndex + 1) % championData.length);
-    }, 10000); 
+    }, 7000); 
 
     return () => clearInterval(interval);
   }, []);
