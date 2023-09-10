@@ -4,7 +4,6 @@ import { ShopContext } from "./Shop-Context";
 import { CartItem } from "./Cart_item";
 import "./Cart.css";
 
-//Cart component
 export const Cart = () => {
   const { cartItems, getTotalCartAmount, resetCart } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
@@ -15,7 +14,6 @@ export const Cart = () => {
     navigate("/Payment", { state: { totalAmount: totalAmount, cartItems: cartItems } });
   };
 
-  //function the checks if the cart is empty
   const isCartEmpty = Object.values(cartItems).every(quantity => quantity === 0);
 
   return (
